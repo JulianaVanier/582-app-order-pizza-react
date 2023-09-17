@@ -7,6 +7,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import {configureStore} from "@reduxjs/toolkit";
+import {Provider} from "react-redux";
+
+const store = configureStore({
+  reducer: {},
+});
 
 const router = createBrowserRouter([
   {
@@ -22,7 +28,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
