@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
-// import PizzaItem from "./PizzaItem";
+import { useEffect } from "react";
+import { useDispatch} from "react-redux";
+import { PizzaSlice, setPizzas } from '../features/PizzaStore';
+import PizzaItem from "./PizzaItem";
 
 export default function MenuPizza() {
-    const [pizzas, setPizzas] = useState([]);
+    const dispatch = useDispatch();
+
+
+    // const [pizzas, setPizzas] = useState([]);
     
     // const fetchPizzas = () => { 
     //     console.log("fetching pizzas");
@@ -19,8 +24,9 @@ export default function MenuPizza() {
             .then((response) => response.json())
             .then((jsonPizza) => {
                 if (Array.isArray(jsonPizza)) {
-                    console.log(jsonPizza);
-                    setPizzas(jsonPizza);
+                    console.log("JSON", jsonPizza);
+                    {dispatch(PizzaSlice.actions.setPizzas(jsonPizza))}
+                    console.log("dispatched",setPizzas(jsonPizza) );
 
                 } else {
                     console.error("JSON invalid.");
@@ -37,17 +43,20 @@ export default function MenuPizza() {
     return (
 
 <>
+ <h1>Menu</h1>
+ <PizzaItem />
+
+ {/* <p>{}</p> */}
 
 
 
 
-
-        <ul>
+        {/* <ul>
             {pizzas.map((pizza) => (
             <li key={pizza.id}>{pizza.title}</li>
             // <li key={pizza.id}>{pizza.description}</li>
             ))}
-        </ul>
+        </ul> */}
 </>
         // <>
         // {pizzas.title}
