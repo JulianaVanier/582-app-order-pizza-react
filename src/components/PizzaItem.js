@@ -26,3 +26,30 @@
 // }
 
 // export default PizzaItem;
+
+import React from 'react'
+import { useSelector } from 'react-redux'
+
+function PizzaItem() {
+  const pizza = useSelector((state) => state.pizza.pizzas)
+  return (
+    <>
+    <h2>BOLA</h2>
+      <div className="pizza-item">
+
+          {pizza.map((pizza) => (
+            <div key={pizza.id}>
+             <p>{pizza.title}</p>
+             <p>{pizza.description}</p>
+             <p>{pizza.size.small}</p>
+            </div>
+
+
+          ))}
+
+    </div>
+    </>
+  )
+}
+
+export default PizzaItem
