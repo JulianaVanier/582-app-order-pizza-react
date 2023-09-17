@@ -9,9 +9,12 @@ import {
 } from "react-router-dom";
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
+import { PizzaSlice } from './features/PizzaStore'; 
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    pizza: PizzaSlice.reducer,
+  },
 });
 
 const router = createBrowserRouter([
