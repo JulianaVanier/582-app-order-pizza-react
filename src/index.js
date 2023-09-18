@@ -11,6 +11,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
 import { PizzaSlice } from './features/PizzaStore'; 
 import { IngredientSlice } from './features/IngredientStore';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const store = configureStore({
   reducer: {
