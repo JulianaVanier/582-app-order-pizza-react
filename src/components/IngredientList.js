@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch} from "react-redux";
 // import { PizzaSlice, setPizzas } from '../features/PizzaStore';
+import { IngredientSlice, setIngredient } from '../features/IngredientStore';
 import IngredientItem from "./IngredientItem";
 import { useSelector } from 'react-redux'
 
