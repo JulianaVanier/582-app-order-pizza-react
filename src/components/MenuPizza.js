@@ -2,21 +2,11 @@ import { useEffect } from "react";
 import { useDispatch} from "react-redux";
 import { PizzaSlice, setPizzas } from '../features/PizzaStore';
 import PizzaItem from "./PizzaItem";
+import { useSelector } from 'react-redux'
 
 export default function MenuPizza() {
+    const pizza = useSelector((state) => state.pizza.pizzas)
     const dispatch = useDispatch();
-
-
-    // const [pizzas, setPizzas] = useState([]);
-    
-    // const fetchPizzas = () => { 
-    //     console.log("fetching pizzas");
-    //     fetch(`https://bookish-rotary-phone-j6j6g76r445255vv-3000.app.github.dev/pizza`) 
-    //       .then((response) => response.json()) 
-    //       .then((jsonPizza) => setPizzas(jsonPizza)) 
-    //       .catch((error) => console.log(error));
-    //   }; 
-
 
     const fetchPizzas = () => {
         console.log("fetching pizzas");
@@ -44,25 +34,13 @@ export default function MenuPizza() {
 
 <>
  <h1>Menu</h1>
- <PizzaItem />
 
- {/* <p>{}</p> */}
-
-
-
-
-        {/* <ul>
-            {pizzas.map((pizza) => (
-            <li key={pizza.id}>{pizza.title}</li>
-            // <li key={pizza.id}>{pizza.description}</li>
-            ))}
-        </ul> */}
+ {pizza.map((pizza, index) => {
+    console.log("pizza", pizza);
+    return <PizzaItem key={index} obj={pizza} />;
+})}
 </>
-        // <>
-        // {pizzas.title}
-        // </>
     );
 }
 
-// export default MenuPizza;
 
