@@ -14,7 +14,7 @@ function PizzaItem(props) {
 
         <div className='col-md-3'>
           <div className="card">
-            <img className="card-img-top" src="/assets/image/meat-supreme-nc.avif" alt="Card image cap"/>
+            <img className="card-img-top" src={props.obj.imageReact} alt="Card image cap"/>
             <div className="card-body">
               <h5 className="card-title">{props.obj.title}</h5>
               <p className="card-text">{props.obj.description}</p>
