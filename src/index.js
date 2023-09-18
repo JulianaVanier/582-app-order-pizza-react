@@ -10,10 +10,12 @@ import {
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
 import { PizzaSlice } from './features/PizzaStore'; 
+import { IngredientSlice } from './features/IngredientStore';
 
 const store = configureStore({
   reducer: {
     pizza: PizzaSlice.reducer,
+    ingredient: IngredientSlice.reducer,
   },
 });
 

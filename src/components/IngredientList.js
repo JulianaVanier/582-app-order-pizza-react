@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 export default function IngredientList() {
     // const pizza = useSelector((state) => state.pizza.pizzas)
+    const ingredient = useSelector((state) => state.ingredient.ingredients)
     const dispatch = useDispatch();
 
     const fetchIngredients = () => {
@@ -39,6 +40,14 @@ export default function IngredientList() {
     console.log("pizza", pizza);
     return <PizzaItem key={index} obj={pizza} />;
 })} */}
+
+ <h1>Ingredients</h1>
+
+ {ingredient.map((ingredient, index) => {
+    console.log("ingredient", ingredient);
+    return <IngredientItem key={index} obj={ingredient} />;
+})}
+
 </>
     );
 }
