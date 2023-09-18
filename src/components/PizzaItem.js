@@ -34,13 +34,12 @@ function PizzaItem() {
   const pizza = useSelector((state) => state.pizza.pizzas)
   return (
     <>
-    <h2>BOLA</h2>
-      <div className="pizza-item">
+      <div className="box-menu-pizza">
 
           {pizza.map((pizza) => (
             <div key={pizza.id}>
-             <p>{pizza.title}</p>
-             <p>{pizza.description}</p>
+             <h2>{pizza.title}</h2>
+             <p className='description'>{pizza.description}</p>
              <p>{pizza.size.small}</p>
             </div>
 
