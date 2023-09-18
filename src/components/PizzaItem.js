@@ -1,5 +1,8 @@
 import React from 'react'
 // import { useSelector } from 'react-redux'
+// import logo from '../logo.svg';
+// import img from {props.obj.image}
+
 
 
 function PizzaItem(props) {
@@ -7,16 +10,19 @@ function PizzaItem(props) {
 
   // const pizza = useSelector((state) => state.pizza.pizzas)
   return (
-    <>
-      <div className="box-menu-pizza">
+  <>
 
-             {/* <h2>{pizza.title}</h2> */}
-             <h2>{props.obj.title}</h2>
-             <p className="description">{props.obj.description}</p>
-             <p>{props.obj.size.small}</p>
-             <img src="/src/assests/images/broccoli-pizza.webp" alt="Pizza image" className="img-pizza-main" />
-    </div>
-    </>
+        <div className='col-md-3'>
+          <div className="card">
+            <img className="card-img-top" src="/assets/image/meat-supreme-nc.avif" alt="Card image cap"/>
+            <div className="card-body">
+              <h5 className="card-title">{props.obj.title}</h5>
+              <p className="card-text">{props.obj.description}</p>
+              <a href="#" className="btn btn-danger">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+  </>
   )
 }
 

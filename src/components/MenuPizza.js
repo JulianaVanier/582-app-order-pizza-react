@@ -33,12 +33,15 @@ export default function MenuPizza() {
     return (
 
 <>
- <h1>Menu</h1>
-
- {pizza.map((pizza, index) => {
-    console.log("pizza", pizza);
-    return <PizzaItem key={index} obj={pizza} />;
-})}
+    <h1>Menu</h1>
+    <div className="container text-center">
+        <div className="row gap-0 row-gap-3">
+            {pizza.map((pizza, index) => {
+            console.log("pizza", pizza);
+            return <PizzaItem key={index} obj={pizza} />;
+            })}
+        </div>
+    </div>
 </>
     );
 }
