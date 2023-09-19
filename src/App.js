@@ -2,17 +2,18 @@ import './App.css';
 import MenuPizza from './components/MenuPizza';
 import IngredientList from './components/IngredientList';
 import HeaderApp from './components/HeaderApp';
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from 'react-bootstrap';
 
 
 function App() {
   return (
     // <div className="App">
-      <div className="container">
+      <Container>
       <HeaderApp />
       <MenuPizza />
       {/* <IngredientList /> */}
-    </div>
+    </Container>
     // </div>
   );
 }
