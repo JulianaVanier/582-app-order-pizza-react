@@ -9,11 +9,16 @@ import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import { Image } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { PizzaSlice, setSizeSelected } from '../features/PizzaStore';
+import { useSelector } from 'react-redux'
 
 
 
 function PizzaItem(props) {
   console.log("AQUI props", props)
+  const dispatch = useDispatch();
+  const sizeSelected = useSelector((state) => state.pizza.sizeSelected)
 
   //function to modify button text
   function customButton(){
@@ -25,7 +30,7 @@ function PizzaItem(props) {
   }
 
   const [show, setShow] = useState(false);
-
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -52,31 +57,40 @@ function PizzaItem(props) {
       <Modal.Header closeButton>
         <Modal.Title>Select a size</Modal.Title>
       </Modal.Header>
-      <Modal.Body bg-light >
+      <Modal.Body>
         <Row>
           <Col xs={2} md={3} className="text-center border rounded " >
             <Image src="/assets/image/pizza-icon.png" fluid/>
-            <p class="fw-bold">Small</p>
-            <p class="fw-semibold fs-5">${props.obj.size.small}</p>
+            <p className="fw-bold">Small</p>
+            <p className="fw-semibold fs-5">${props.obj.size.small}</p>
+            <Button onClick={() => dispatch(PizzaSlice.actions.setSizeSelected(props.obj.size.small))}>Click</Button>
           </Col>
           <Col xs={6} md={3} className="text-center border rounded ">
             <Image src="/assets/image/pizza-icon.png" fluid />
-            <p class="fw-bold">Medium</p>
-            <p class="fw-semibold fs-5">${props.obj.size.medium}</p>
+            <p className="fw-bold">Medium</p>
+            <p className="fw-semibold fs-5">${props.obj.size.medium}</p>
+            <Button onClick={() => dispatch(PizzaSlice.actions.setSizeSelected(props.obj.size.medium))}>Click</Button>
+
           </Col>
           <Col xs={6} md={3} className="text-center border rounded ">
             <Image src="/assets/image/pizza-icon.png" fluid />
-            <p class="fw-bold">Large</p>
-            <p class="fw-semibold fs-5">${props.obj.size.large}</p>
+            <p className="fw-bold">Large</p>
+            <p className="fw-semibold fs-5">${props.obj.size.large}</p>
+            <Button onClick={() => dispatch(PizzaSlice.actions.setSizeSelected(props.obj.size.large))}>Click</Button>
+
           </Col>
           <Col xs={6} md={3} className="text-center border rounded ">
             <Image src="/assets/image/pizza-icon.png" fluid/>
-            <p class="fw-bold">X-Large</p>
-            <p class="fw-semibold fs-5">${props.obj.size.xlarge}</p>
+            <p className="fw-bold">X-Large</p>
+            <p className="fw-semibold fs-5">${props.obj.size.xlarge}</p>
+            <Button onClick={() => dispatch(PizzaSlice.actions.setSizeSelected(props.obj.size.xlarge))}>Click</Button>
+
           </Col>
         </Row>
         <Row>
-           <p>#asfas</p>
+           <p className="fw-semibold fs-4 text-center">
+            ${sizeSelected}
+           </p>
         </Row>
       </Modal.Body>
       <Modal.Footer>

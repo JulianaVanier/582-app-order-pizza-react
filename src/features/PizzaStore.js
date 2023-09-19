@@ -4,6 +4,7 @@ export const PizzaSlice = createSlice({
     name: 'pizza',
     initialState: {
         pizzas: [],
+        sizeSelected: null,
         // actual value of states
     },
     reducers: {
@@ -13,9 +14,14 @@ export const PizzaSlice = createSlice({
             //Pizzas will be all we get from the action.payload
             state.pizzas = action.payload;
         },
+        setSizeSelected: (state, action) => {
+            state.sizeSelected = action.payload;
+            console.log("state", state.sizeSelected);
+        }
     },
 });
 //export to have acess 
 export const {setPizzas} = PizzaSlice.actions;
+export const {setSizeSelected} = PizzaSlice.actions;
 
 export default PizzaSlice.reducer;
