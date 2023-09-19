@@ -1,7 +1,4 @@
-import React from 'react'
-// import { useSelector } from 'react-redux'
-// import logo from '../logo.svg';
-// import img from {props.obj.image}
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
@@ -11,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import { Image } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { PizzaSlice, setSizeSelectedPrice } from '../features/PizzaStore';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 
 
@@ -39,6 +36,27 @@ function PizzaItem(props) {
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handlePizzaToCart = () => {
+    console.log("handlePizzaToCart", props.obj);
+    console.log("sizeeeeeeeeee", sizeSelectedPrice)
+    if (props.obj.custom === false) {
+      const pizzaToCart = {
+        _id: props.obj._id,
+        title: props.obj.title,
+        custom: props.obj.custom,
+        description: props.obj.description,
+        sizeSelected: sizeSelectedPrice,
+        sizeSelectedPrice: sizeSelectedPrice,
+        imageReact: props.obj.imageReact,
+        ingredient: props.obj.ingredient,
+        quantity: 1,
+      };
+      console.log("pizzaToCart", pizzaToCart);
+      dispatch(PizzaSlice.actions.addPizzasInCart(pizzaToCart));
+    }
+
+  };
 
   // const pizza = useSelector((state) => state.pizza.pizzas)
   return (
@@ -97,7 +115,7 @@ function PizzaItem(props) {
         </Row>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="danger" onClick={handleClose}>
+        <Button variant="danger" onClick={() => {handleClose(); handlePizzaToCart(props.obj, sizeSelectedPrice);}}>
           Add to Cart
         </Button>
       </Modal.Footer>

@@ -6,6 +6,8 @@ export const PizzaSlice = createSlice({
         pizzas: [],
         sizeSelectedPrice: null,
         sizeSelected: null,
+        pizzasInCart: [],
+
         // actual value of states
     },
     reducers: {
@@ -22,8 +24,13 @@ export const PizzaSlice = createSlice({
         },
         setSizeSelected: (state, action) => {
             state.sizeSelected = action.payload;
-            console.log("state 222222", state.sizeSelected);
-        }
+            console.log("state", state.sizeSelected);
+        },
+        addPizzasInCart: (state, action) => {
+            
+            state.pizzasInCart = action.payload;
+            console.log("state AQUI MALUCA", state.pizzasInCart);
+        },
 
     },
 });
@@ -31,5 +38,6 @@ export const PizzaSlice = createSlice({
 export const {setPizzas} = PizzaSlice.actions;
 export const {setSizeSelectedPrice} = PizzaSlice.actions;
 export const {setSizeSelected} = PizzaSlice.actions;
+export const {addPizzasInCart} = PizzaSlice.actions;
 
 export default PizzaSlice.reducer;
