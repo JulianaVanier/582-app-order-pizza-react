@@ -29,6 +29,11 @@ function PizzaItem(props) {
     }
   }
 
+  //function to clear size selected when close pop up
+  const clearSizeSelected = () => {
+    dispatch(PizzaSlice.actions.setSizeSelectedPrice(null));
+    dispatch(PizzaSlice.actions.setSizeSelected(null));
+  }
 
   const [show, setShow] = useState(false);
   
@@ -54,8 +59,8 @@ function PizzaItem(props) {
     </Col>
 
     {/* Pop Up select size */}
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
+    <Modal show={show} onHide={() => { handleClose(); clearSizeSelected(); }}>
+      <Modal.Header closeButton >
         <Modal.Title>Select a size</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -71,21 +76,18 @@ function PizzaItem(props) {
             <p className="fw-bold">Medium</p>
             <p className="fw-semibold fs-5">${props.obj.size.medium}</p>
             <Button onClick={()=>{dispatch(PizzaSlice.actions.setSizeSelectedPrice(props.obj.size.medium));dispatch(PizzaSlice.actions.setSizeSelected('medium'))}}>Select</Button>
-
           </Col>
           <Col xs={6} md={3} className="text-center border rounded ">
             <Image src="/assets/image/pizza-icon.png" fluid />
             <p className="fw-bold">Large</p>
             <p className="fw-semibold fs-5">${props.obj.size.large}</p>
             <Button onClick={()=>{dispatch(PizzaSlice.actions.setSizeSelectedPrice(props.obj.size.large));dispatch(PizzaSlice.actions.setSizeSelected('large'))}}>Select</Button>
-
           </Col>
           <Col xs={6} md={3} className="text-center border rounded ">
             <Image src="/assets/image/pizza-icon.png" fluid/>
             <p className="fw-bold">X-Large</p>
             <p className="fw-semibold fs-5">${props.obj.size.xlarge}</p>
             <Button onClick={()=>{dispatch(PizzaSlice.actions.setSizeSelectedPrice(props.obj.size.xlarge));dispatch(PizzaSlice.actions.setSizeSelected('xlarge'))}}>Select</Button>
-
           </Col>
         </Row>
         <Row>
