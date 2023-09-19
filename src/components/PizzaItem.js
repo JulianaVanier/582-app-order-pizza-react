@@ -54,6 +54,21 @@ function PizzaItem(props) {
       };
       console.log("pizzaToCart", pizzaToCart);
       dispatch(PizzaSlice.actions.addPizzasInCart(pizzaToCart));
+    } else {
+      const pizzaToCustomize = {
+        _id: props.obj._id,
+        id: Date.now(),
+        title: props.obj.title,
+        custom: props.obj.custom,
+        description: props.obj.description,
+        sizeSelected: sizeSelectedPrice,
+        sizeSelectedPrice: sizeSelectedPrice,
+        imageReact: props.obj.imageReact,
+        ingredient: props.obj.ingredient,
+        quantity: 1,
+      };
+      console.log("pizzaToCustomize", pizzaToCustomize);
+      dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaToCustomize));
     }
 
   };
