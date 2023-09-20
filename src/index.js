@@ -12,6 +12,7 @@ import {Provider} from "react-redux";
 import { PizzaSlice } from './features/PizzaStore'; 
 import { IngredientSlice } from './features/IngredientStore';
 import "bootstrap/dist/css/bootstrap.min.css";
+import CartView from './components/CartView';
 
 const store = configureStore({
   reducer: {
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
     element: <div>Hello world!
       <App />
     </div>,
+  },
+  {
+    path: "/cart",
+    element: (
+      <div>
+        <CartView />
+      </div>
+    ),
   },
 ]);
 

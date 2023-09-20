@@ -7,16 +7,18 @@ import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import { Image } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { PizzaSlice, setSizeSelectedPrice } from '../features/PizzaStore';
+import { PizzaSlice } from '../features/PizzaStore';
 import { useSelector } from 'react-redux';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function PizzaItem(props) {
   console.log("AQUI props", props)
   const dispatch = useDispatch();
-  const sizeSelectedPrice = useSelector((state) => state.pizza.sizeSelectedPrice)
+  const sizeSelectedPrice = useSelector((state) => state.pizza.sizeSelectedPrice);
+  const navigate = useNavigate();
 
   //function to modify button text
   function customButton(){
@@ -55,7 +57,7 @@ function PizzaItem(props) {
       };
       console.log("pizzaToCart", pizzaToCart);
       dispatch(PizzaSlice.actions.addPizzasInCart(pizzaToCart));
-      return <Link to="/cart" />
+      navigate ("/cart");
 
     } else {
       const pizzaToCustomize = {
@@ -72,7 +74,6 @@ function PizzaItem(props) {
       };
       console.log("pizzaToCustomize", pizzaToCustomize);
       dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaToCustomize));
-      return <Link to="/customize" />
     }
 
   };
@@ -139,6 +140,9 @@ function PizzaItem(props) {
         </Button>
       </Modal.Footer>
     </Modal>
+
+
+
 
   </>
   )
