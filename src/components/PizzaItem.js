@@ -9,6 +9,7 @@ import { Image } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { PizzaSlice, setSizeSelectedPrice } from '../features/PizzaStore';
 import { useSelector } from 'react-redux';
+import { Link, Route, Routes } from 'react-router-dom';
 
 
 
@@ -54,6 +55,8 @@ function PizzaItem(props) {
       };
       console.log("pizzaToCart", pizzaToCart);
       dispatch(PizzaSlice.actions.addPizzasInCart(pizzaToCart));
+      return <Link to="/cart" />
+
     } else {
       const pizzaToCustomize = {
         _id: props.obj._id,
@@ -69,6 +72,7 @@ function PizzaItem(props) {
       };
       console.log("pizzaToCustomize", pizzaToCustomize);
       dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaToCustomize));
+      return <Link to="/customize" />
     }
 
   };
