@@ -74,6 +74,7 @@ function PizzaItem(props) {
       };
       console.log("pizzaToCustomize", pizzaToCustomize);
       dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaToCustomize));
+      navigate ("/custompizza");
     }
 
   };

@@ -13,6 +13,7 @@ import { PizzaSlice } from './features/PizzaStore';
 import { IngredientSlice } from './features/IngredientStore';
 import "bootstrap/dist/css/bootstrap.min.css";
 import CartView from './components/CartView';
+import CustomPizzaView from './components/CustomPizzaView';
 
 const store = configureStore({
   reducer: {
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
     element: (
       <div>
         <CartView />
+      </div>
+    ),
+  },
+  {
+    path: "/custompizza",
+    element: (
+      <div>
+        <CustomPizzaView />
       </div>
     ),
   },
