@@ -25,7 +25,7 @@ const store = configureStore({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!
+    element: <div>
       <App />
     </div>,
   },

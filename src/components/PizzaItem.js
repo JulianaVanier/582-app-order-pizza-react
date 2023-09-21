@@ -11,14 +11,14 @@ import { PizzaSlice } from '../features/PizzaStore';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import PopUpSize from './PopUpSize';
 
 
 
-function PizzaItem(props) {
-  console.log("AQUI props", props)
-  const dispatch = useDispatch();
-  const sizeSelectedPrice = useSelector((state) => state.pizza.sizeSelectedPrice);
-  const navigate = useNavigate();
+export default function PizzaItem(props) {
+  // const dispatch = useDispatch();
+  // const sizeSelectedPrice = useSelector((state) => state.pizza.sizeSelectedPrice);
+  // const navigate = useNavigate();
 
   //function to modify button text
   function customButton(){
@@ -29,55 +29,55 @@ function PizzaItem(props) {
     }
   }
 
-  //function to clear size selected when close pop up
-  const clearSizeSelected = () => {
-    dispatch(PizzaSlice.actions.setSizeSelectedPrice(null));
-    dispatch(PizzaSlice.actions.setSizeSelected(null));
-  }
+  // //function to clear size selected when close pop up
+  // const clearSizeSelected = () => {
+  //   dispatch(PizzaSlice.actions.setSizeSelectedPrice(null));
+  //   dispatch(PizzaSlice.actions.setSizeSelected(null));
+  // }
 
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
-  const handlePizzaToCart = () => {
-    console.log("handlePizzaToCart", props.obj);
-    console.log("sizeeeeeeeeee", sizeSelectedPrice)
-    if (props.obj.custom === false) {
-      const pizzaToCart = {
-        _id: props.obj._id,
-        title: props.obj.title,
-        custom: props.obj.custom,
-        description: props.obj.description,
-        sizeSelected: sizeSelectedPrice,
-        sizeSelectedPrice: sizeSelectedPrice,
-        imageReact: props.obj.imageReact,
-        ingredient: props.obj.ingredient,
-        quantity: 1,
-      };
-      console.log("pizzaToCart", pizzaToCart);
-      dispatch(PizzaSlice.actions.addPizzasInCart(pizzaToCart));
-      navigate ("/cart");
+  // const handlePizzaToCart = () => {
+  //   console.log("handlePizzaToCart", props.obj);
+  //   console.log("sizeeeeeeeeee", sizeSelectedPrice)
+  //   if (props.obj.custom === false) {
+  //     const pizzaToCart = {
+  //       _id: props.obj._id,
+  //       title: props.obj.title,
+  //       custom: props.obj.custom,
+  //       description: props.obj.description,
+  //       sizeSelected: sizeSelectedPrice,
+  //       sizeSelectedPrice: sizeSelectedPrice,
+  //       imageReact: props.obj.imageReact,
+  //       ingredient: props.obj.ingredient,
+  //       quantity: 1,
+  //     };
+  //     console.log("pizzaToCart", pizzaToCart);
+  //     dispatch(PizzaSlice.actions.addPizzasInCart(pizzaToCart));
+  //     // navigate ("/cart");
 
-    } else {
-      const pizzaToCustomize = {
-        _id: props.obj._id,
-        id: Date.now(),
-        title: props.obj.title,
-        custom: props.obj.custom,
-        description: props.obj.description,
-        sizeSelected: sizeSelectedPrice,
-        sizeSelectedPrice: sizeSelectedPrice,
-        imageReact: props.obj.imageReact,
-        ingredient: props.obj.ingredient,
-        quantity: 1,
-      };
-      console.log("pizzaToCustomize", pizzaToCustomize);
-      dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaToCustomize));
-      navigate ("/custompizza");
-    }
+  //   } else {
+  //     const pizzaToCustomize = {
+  //       _id: props.obj._id,
+  //       id: Date.now(),
+  //       title: props.obj.title,
+  //       custom: props.obj.custom,
+  //       description: props.obj.description,
+  //       sizeSelected: sizeSelectedPrice,
+  //       sizeSelectedPrice: sizeSelectedPrice,
+  //       imageReact: props.obj.imageReact,
+  //       ingredient: props.obj.ingredient,
+  //       quantity: 1,
+  //     };
+  //     console.log("pizzaToCustomize", pizzaToCustomize);
+  //     dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaToCustomize));
+  //     navigate ("/custompizza");
+  //   }
 
-  };
+
 
   // const pizza = useSelector((state) => state.pizza.pizzas)
   return (
@@ -90,7 +90,7 @@ function PizzaItem(props) {
             <Card.Text>
             {props.obj.description}
             </Card.Text>
-            <Button variant="danger" onClick={handleShow}>
+            <Button variant="danger" >
             {customButton()}
             </Button>
         </Card.Body>
@@ -98,7 +98,7 @@ function PizzaItem(props) {
     </Col>
 
     {/* Pop Up select size */}
-    <Modal show={show} onHide={() => { handleClose(); clearSizeSelected(); }}>
+    {/* <Modal show={show} onHide={() => { handleClose(); clearSizeSelected(); }}>
       <Modal.Header closeButton >
         <Modal.Title>Select a size</Modal.Title>
       </Modal.Header>
@@ -140,13 +140,14 @@ function PizzaItem(props) {
           Add to Cart
         </Button>
       </Modal.Footer>
-    </Modal>
+    </Modal> */}
 
 
 
 
   </>
-  )
-}
+    );
+  }
 
-export default PizzaItem
+
+// export default PizzaItem
