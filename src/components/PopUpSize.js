@@ -11,6 +11,7 @@ export default function PopUpSize(props) {
 
     const dispatch = useDispatch();
     const sizeSelectedPrice = useSelector((state) => state.pizza.sizeSelectedPrice);
+    const sizeSelected = useSelector((state) => state.pizza.sizeSelected);
     const navigate = useNavigate();
   
     //function to clear size selected when close pop up
@@ -33,7 +34,7 @@ export default function PopUpSize(props) {
           title: props.obj.title,
           custom: props.obj.custom,
           description: props.obj.description,
-          sizeSelected: sizeSelectedPrice,
+          sizeSelected: sizeSelected,
           sizeSelectedPrice: sizeSelectedPrice,
           imageReact: props.obj.imageReact,
           ingredient: props.obj.ingredient,
@@ -41,7 +42,7 @@ export default function PopUpSize(props) {
         };
         console.log("pizzaToCart", pizzaToCart);
         dispatch(PizzaSlice.actions.addPizzasInCart(pizzaToCart));
-        // navigate ("/cart");
+        navigate ("/cart");
   
       } else {
         const pizzaToCustomize = {
@@ -50,7 +51,7 @@ export default function PopUpSize(props) {
           title: props.obj.title,
           custom: props.obj.custom,
           description: props.obj.description,
-          sizeSelected: sizeSelectedPrice,
+          sizeSelected: sizeSelected,
           sizeSelectedPrice: sizeSelectedPrice,
           imageReact: props.obj.imageReact,
           ingredient: props.obj.ingredient,
