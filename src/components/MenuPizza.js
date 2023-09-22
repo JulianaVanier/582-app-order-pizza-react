@@ -10,7 +10,8 @@ export default function MenuPizza() {
 
     const fetchPizzas = () => {
         console.log("fetching pizzas");
-        fetch('https://bookish-rotary-phone-j6j6g76r445255vv-3000.app.github.dev/pizza')
+        // fetch('https://bookish-rotary-phone-j6j6g76r445255vv-3000.app.github.dev/pizza')
+        fetch('http://localhost:3000/pizza')
             .then((response) => response.json())
             .then((jsonPizza) => {
                 if (Array.isArray(jsonPizza)) {
@@ -34,7 +35,7 @@ export default function MenuPizza() {
 
 <>
     <h1>Menu</h1>
-    <div className="container text-center">
+    <div className="container text-center menu">
         <div className="row gap-0 row-gap-3">
             {pizza.map((pizza, index) => {
             console.log("pizza", pizza);
