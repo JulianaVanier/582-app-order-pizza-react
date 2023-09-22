@@ -1,0 +1,113 @@
+
+.menu{
+  .card{
+    width: 18rem;
+  }
+}
+
+.cart{
+  .card{
+    // background-color: red;
+    height: 8rem;    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+  }
+  img{
+    width: 6rem;
+    max-height: 100%;
+    padding-left: 10px;
+  }
+  .card-title{
+    // width: 10rem;
+    text-align: left;
+  }
+  .card-text{
+    // width: 10rem;
+    text-align: left;
+  }
+  .btn-add-chose-size{
+    display: none;
+  }
+  .box-qt{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-right: 10px;
+    .btn-add{
+      width: 2rem;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .btn-remove{
+      width: 2rem;
+      max-height: 100%;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    p{
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  .box-delete{
+    .btn-delete{
+      width: 2rem;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+
+.App {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
