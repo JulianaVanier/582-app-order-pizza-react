@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import MenuPizza from './components/MenuPizza';
 import IngredientList from './components/IngredientList';
 import HeaderApp from './components/HeaderApp';
