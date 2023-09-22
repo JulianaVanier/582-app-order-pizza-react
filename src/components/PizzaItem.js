@@ -37,14 +37,14 @@ export default function PizzaItem(props) {
   return (
   <>
     <Col>
-      <Card style={{ width: '18rem' }}>
+      <Card >
         <Card.Img variant="top" src={props.obj.imageReact} />
         <Card.Body>
           <Card.Title>{props.obj.title}</Card.Title>
             <Card.Text>
             {props.obj.description}
             </Card.Text>
-            <Button variant="danger" onClick={onBtnClick}>
+            <Button className='btn-add-chose-size' variant="danger" onClick={onBtnClick}>
             {customButton()} {showPopUpSize && <PopUpSize obj={props.obj} />}
             </Button>
         </Card.Body>
