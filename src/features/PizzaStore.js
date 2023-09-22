@@ -42,7 +42,9 @@ export const PizzaSlice = createSlice({
             state.pizzaToCustomize = action.payload;
             console.log("state CUSTOMIZE", state.pizzaToCustomize);
         },
-
+        removePizzasInCart: (state, action) => {
+            state.pizzasInCart = state.pizzasInCart.filter((pizza) => pizza._id !== action.payload._id);
+        },
     },
 });
 //export to have acess 
