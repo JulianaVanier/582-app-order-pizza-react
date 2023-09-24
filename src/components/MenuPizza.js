@@ -4,6 +4,7 @@ import { PizzaSlice, setPizzas } from '../features/PizzaStore';
 import PizzaItem from "./PizzaItem";
 import { useSelector } from 'react-redux'
 
+
 export default function MenuPizza() {
     const pizza = useSelector((state) => state.pizza.pizzas)
     const dispatch = useDispatch();

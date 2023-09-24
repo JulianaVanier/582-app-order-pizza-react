@@ -45,10 +45,11 @@ export default function PizzaItem(props) {
             {props.obj.description}
             </Card.Text>
             <Button className='btn-add-chose-size' variant="danger" onClick={onBtnClick}>
-            {customButton()} {showPopUpSize && <PopUpSize obj={props.obj} />}
+            {customButton()} 
             </Button>
         </Card.Body>
       </Card>
+      {showPopUpSize && <PopUpSize obj={props.obj} />}
     </Col>
 
   </>
