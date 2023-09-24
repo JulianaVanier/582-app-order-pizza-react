@@ -161,6 +161,7 @@ export default function PopUpSize(props) {
             onClick={() => {
               handleClose();
               handlePizzaToCart(sizeSelectedPrice);
+              clearSizeSelected();
             }}
           >
             Add to Cart

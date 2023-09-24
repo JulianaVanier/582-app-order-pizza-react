@@ -28,8 +28,13 @@ export default function CartComponent() {
             return (
               <Container className="cart">
                 <Row>
-                  <Col xs={6} md={8}>
+                  <Col xs={6} md={6}>
                     <PizzaItem key={index} obj={pizzasInCart} />
+                  </Col>
+                  <Col xs={6} md={2}>
+                    <div className="box-price">
+                      <p>${pizzasInCart.sizeSelectedPrice}</p>
+                    </div>
                   </Col>
                   <Col xs={6} md={2}>
                     <div className="box-qt">
