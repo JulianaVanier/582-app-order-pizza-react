@@ -49,7 +49,11 @@ export default function CartComponent() {
                   <Col xs={6} md={2}>
                     <div className="box-delete">
                       <Image
-                        onClick={()=>{dispatch(PizzaSlice.actions.removePizzasInCart(pizzasInCart))}}
+                        onClick={() => {
+                          dispatch(
+                            PizzaSlice.actions.removePizzasInCart(pizzasInCart)
+                          );
+                        }}
                         className="btn-delete"
                         src="assets/image/delete-icon.png"
                       />
@@ -61,6 +65,13 @@ export default function CartComponent() {
           })}
         </div>
       </div>
+      <Container>
+        <Row>
+          <Col xs={6} md={12}>
+            Total Price: $
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
