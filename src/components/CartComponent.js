@@ -7,13 +7,10 @@ import { Container } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { PizzaSlice } from "../features/PizzaStore";
-import { useState } from "react";
 
 
 export default function CartComponent() {
   const pizzasInCart = useSelector((state) => state.pizza.pizzasInCart);
-  const pizzaInCart = pizzasInCart.map((pizza) => pizza);
-  console.log("pizzasInCart no carrinho", pizzasInCart);
   const dispatch = useDispatch();
 
 
@@ -21,6 +18,14 @@ function calcTotalPrice(pizzaInCart) {
   let totalPrice = 0;
   totalPrice = pizzaInCart.sizeSelectedPrice * pizzaInCart.quantity;
   return totalPrice;
+};
+
+function calcTotalPriceAll() {
+  let totalPriceAll = 0;
+  for (let i = 0; i < pizzasInCart.length; i++) {
+    totalPriceAll += pizzasInCart[i].sizeSelectedPrice * pizzasInCart[i].quantity;
+  }
+  return totalPriceAll;
 };
 
 
@@ -90,7 +95,7 @@ function calcTotalPrice(pizzaInCart) {
       <Container>
         <Row>
           <Col xs={6} md={12}>
-            <p>Total Price: </p>
+            <p>Total Price:{calcTotalPriceAll()}</p>
           </Col>
         </Row>
       </Container>
