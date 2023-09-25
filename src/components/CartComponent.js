@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PizzaItem from "./PizzaItem";
 import { useSelector } from "react-redux";
 import { Button, Row } from "react-bootstrap";
@@ -9,21 +9,22 @@ import { useDispatch } from "react-redux";
 import { PizzaSlice } from "../features/PizzaStore";
 import { useState } from "react";
 
+
 export default function CartComponent() {
   const pizzasInCart = useSelector((state) => state.pizza.pizzasInCart);
   console.log("pizzasInCart no carrinho", pizzasInCart);
   const dispatch = useDispatch();
-  // const totalPrice = useSelector((state) => state.pizza.totalPrice);
+  const totalPrice = useSelector((state) => state.pizza.totalPrice);
 
 
-const getTotalPrice = () => {
-    let totalPrice = 0;
-    for (let i = 0; i < pizzasInCart.length; i++) {
-      totalPrice = pizzasInCart[i].sizeSelectedPrice * pizzasInCart[i].quantity;
-      console.log("AQUI TOTAL PRICE", totalPrice);
-    }
-    return totalPrice;
-  };
+// const getTotalPrice = () => {
+//     let totalPrice = 0;
+//     for (let i = 0; i < pizzasInCart.length; i++) {
+//       totalPrice = pizzasInCart[i].sizeSelectedPrice * pizzasInCart[i].quantity;
+//       console.log("AQUI TOTAL PRICE", totalPrice);
+//     }
+//     return totalPrice;
+//   };
 
   // function getTotalPrice() {
   //   dispatch(PizzaSlice.actions.calcTotalPrice(pizzasInCart));
@@ -39,6 +40,11 @@ const getTotalPrice = () => {
   // const removePizzaFromCart = () => {
   //   dispatch(PizzaSlice.actions.removePizzasInCart(pizzasInCart));
   // }
+
+    useEffect(() => {
+        dispatch(PizzaSlice.actions.calcTotalPrice(pizzasInCart));
+    }, [pizzasInCart]); 
+
 
   return (
     <>
@@ -56,7 +62,7 @@ const getTotalPrice = () => {
                   </Col>
                   <Col xs={6} md={2}>
                     <div className="box-price">
-                      <p> ${getTotalPrice()}</p>
+                      <p> ${totalPrice}</p>
                     </div>
                   </Col>
                   <Col xs={6} md={2}>

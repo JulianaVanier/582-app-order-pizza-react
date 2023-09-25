@@ -70,18 +70,18 @@ export const PizzaSlice = createSlice({
                 }
             }
         },
-        // calcTotalPrice: (state, action) => {
-        //     // state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
-        //     console.log("ANTES", state.totalPrice);
-        //     // let total = 0;
-        //     state.totalPrice = 0;
-        //     console.log("DEPOIS", state.totalPrice);
-        //     for (let i = 0; i < state.pizzasInCart.length; i++) {
-        //         state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
-        //         console.log("AQUI TOTAL PRICE", state.totalPrice);
-        //     }
-        //     // state.totalPrice = total;
-        // }
+        calcTotalPrice: (state, action) => {
+            // state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
+            console.log("ANTES", state.totalPrice);
+            // let total = 0;
+            state.totalPrice = 0;
+            console.log("DEPOIS", state.totalPrice);
+            for (let i = 0; i < state.pizzasInCart.length; i++) {
+                state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
+                console.log("AQUI TOTAL PRICE", state.totalPrice);
+            }
+            // state.totalPrice = total;
+        }
     },});
 //export to have acess 
 export const {setPizzas} = PizzaSlice.actions;
