@@ -7,11 +7,15 @@ import { Container } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { PizzaSlice } from "../features/PizzaStore";
+import { useNavigate } from "react-router-dom";
+import { history } from "../App";
 
 
 export default function CartComponent() {
   const pizzasInCart = useSelector((state) => state.pizza.pizzasInCart);
   const dispatch = useDispatch();
+  // const history = useHistory();
+  const navigate = useNavigate();
 
 
 function calcTotalPrice(pizzaInCart) {
@@ -27,6 +31,50 @@ function calcTotalPriceAll() {
   }
   return totalPriceAll;
 };
+function distributionPizzasInOrder() {
+  let pizzasInOrder = [];
+  for (let i = 0; i < pizzasInCart.length; i++) {
+    pizzasInOrder.push(pizzasInCart[i]);
+  }
+  return pizzasInOrder;
+};
+
+function placeOrder() {
+
+  var orderToDb ={
+    _id: null,
+    orderNumber: Math.floor(
+      Math.pow(10, 3 - 1) +
+        Math.random() * (Math.pow(10, 3) - Math.pow(10, 3 - 1) - 1)
+    ),
+    pizza: distributionPizzasInOrder(),
+    date: new Date().toISOString(),
+    totalprice: calcTotalPriceAll(),
+  }
+
+  // console.log("pizzasInOrder", pizzasInOrder);
+
+  fetch(
+    "http://localhost:3000/placeorder",
+    {
+      method: "POST",
+      body: JSON.stringify(orderToDb),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+          // this.pizzaStore.clearCart();
+          navigate("/orderplaced");
+          // history.push("/orderplaced");
+    });
+
+
+}
 
 
   return (
@@ -58,6 +106,7 @@ function calcTotalPriceAll() {
                             )
                           );
                         }}
+                        variant="danger"
                       >
                         +
                       </Button>
@@ -70,6 +119,7 @@ function calcTotalPriceAll() {
                           )
                         );
                       }}
+                      variant="danger"
                       >-</Button>
                     </div>
                   </Col>
@@ -94,8 +144,11 @@ function calcTotalPriceAll() {
       </div>
       <Container>
         <Row>
-          <Col xs={6} md={12}>
-            <p>Total Price:{calcTotalPriceAll()}</p>
+          <Col xs={6} md={10}>
+            <p>Total Price: {calcTotalPriceAll()}</p>
+          </Col>
+          <Col xs={6} md={2}>
+            <Button variant="danger" onClick={placeOrder}>Checkout</Button>
           </Col>
         </Row>
       </Container>

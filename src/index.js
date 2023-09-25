@@ -14,6 +14,7 @@ import { IngredientSlice } from './features/IngredientStore';
 import "bootstrap/dist/css/bootstrap.min.css";
 import CartView from './components/CartView';
 import CustomPizzaView from './components/CustomPizzaView';
+import MenuPizza from './components/MenuPizza';
 
 const store = configureStore({
   reducer: {
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
     element: (
       <div>
         <CustomPizzaView />
+      </div>
+    ),
+  },
+  {
+    path: "/orderplaced",
+    element: (
+      <div>
+        <MenuPizza />
       </div>
     ),
   },
