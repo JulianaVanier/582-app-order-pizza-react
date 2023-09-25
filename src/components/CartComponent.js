@@ -12,38 +12,37 @@ import { useState } from "react";
 
 export default function CartComponent() {
   const pizzasInCart = useSelector((state) => state.pizza.pizzasInCart);
+  const pizzaInCart = pizzasInCart.map((pizza) => pizza);
   console.log("pizzasInCart no carrinho", pizzasInCart);
   const dispatch = useDispatch();
-  const totalPrice = useSelector((state) => state.pizza.totalPrice);
+  // const totalPrice = useSelector((state) => state.pizza.totalPrice);
 
 
 // const getTotalPrice = () => {
 //     let totalPrice = 0;
 //     for (let i = 0; i < pizzasInCart.length; i++) {
+
 //       totalPrice = pizzasInCart[i].sizeSelectedPrice * pizzasInCart[i].quantity;
 //       console.log("AQUI TOTAL PRICE", totalPrice);
 //     }
 //     return totalPrice;
 //   };
+function calcTotalPrice(pizzaInCart) {
+  let totalPrice = 0;
+  totalPrice = pizzaInCart.sizeSelectedPrice * pizzaInCart.quantity;
+  return totalPrice;
+};
 
-  // function getTotalPrice() {
-  //   dispatch(PizzaSlice.actions.calcTotalPrice(pizzasInCart));
-  //   return totalPrice;
+  // const calcTotalPrice = (pizzaInCart) => {
+  //   pizzaInCart.totalPrice = pizzaInCart.sizeSelectedPrice * pizzaInCart.quantity;
   // };
 
-
-  // const pizzaAddQuantity = () => {
-  //   console.log("Here btn add inside func", pizzasInCart);
-  //   dispatch(PizzaSlice.actions.pizzaAddQuantityStore(pizzasInCart));
-  // };
 
   // const removePizzaFromCart = () => {
   //   dispatch(PizzaSlice.actions.removePizzasInCart(pizzasInCart));
   // }
 
-    useEffect(() => {
-        dispatch(PizzaSlice.actions.calcTotalPrice(pizzasInCart));
-    }, [pizzasInCart]); 
+
 
 
   return (
@@ -62,7 +61,7 @@ export default function CartComponent() {
                   </Col>
                   <Col xs={6} md={2}>
                     <div className="box-price">
-                      <p> ${totalPrice}</p>
+                      <p> ${calcTotalPrice(pizzaInCart)}</p>
                     </div>
                   </Col>
                   <Col xs={6} md={2}>
