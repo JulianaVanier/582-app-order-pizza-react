@@ -15,34 +15,13 @@ export default function CartComponent() {
   const pizzaInCart = pizzasInCart.map((pizza) => pizza);
   console.log("pizzasInCart no carrinho", pizzasInCart);
   const dispatch = useDispatch();
-  // const totalPrice = useSelector((state) => state.pizza.totalPrice);
 
 
-// const getTotalPrice = () => {
-//     let totalPrice = 0;
-//     for (let i = 0; i < pizzasInCart.length; i++) {
-
-//       totalPrice = pizzasInCart[i].sizeSelectedPrice * pizzasInCart[i].quantity;
-//       console.log("AQUI TOTAL PRICE", totalPrice);
-//     }
-//     return totalPrice;
-//   };
 function calcTotalPrice(pizzaInCart) {
   let totalPrice = 0;
   totalPrice = pizzaInCart.sizeSelectedPrice * pizzaInCart.quantity;
   return totalPrice;
 };
-
-  // const calcTotalPrice = (pizzaInCart) => {
-  //   pizzaInCart.totalPrice = pizzaInCart.sizeSelectedPrice * pizzaInCart.quantity;
-  // };
-
-
-  // const removePizzaFromCart = () => {
-  //   dispatch(PizzaSlice.actions.removePizzasInCart(pizzasInCart));
-  // }
-
-
 
 
   return (
