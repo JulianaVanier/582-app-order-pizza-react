@@ -45,7 +45,6 @@ export const PizzaSlice = createSlice({
         removePizzasInCart: (state, action) => {
             state.pizzasInCart = state.pizzasInCart.filter((pizza) => pizza._id !== action.payload._id);
         },
-
         pizzaAddQuantityStore: (state, action) => {
             console.log("receiving in pizzaAddQuantityStore", state);
             for (let i = 0; i < state.pizzasInCart.length; i++) {
@@ -54,7 +53,20 @@ export const PizzaSlice = createSlice({
                     console.log("pizzasInCart[i].quantity", state.pizzasInCart[i].quantity);
                 }
             }
-        }
+        },
+        pizzaRemoveQuantityStore: (state, action) => {
+            console.log("receiving in pizzaRemoveQuantityStore", state);
+            if (action.payload.quantity === 1) {
+                state.pizzasInCart = state.pizzasInCart.filter((pizza) => pizza._id !== action.payload._id);
+            }
+            
+            for (let i = 0; i < state.pizzasInCart.length; i++) {
+                if (state.pizzasInCart[i]._id === action.payload._id) {
+                    state.pizzasInCart[i].quantity--;
+                    console.log("pizzasInCart[i].quantity", state.pizzasInCart[i].quantity);
+                }
+            }
+        },
     },});
 //export to have acess 
 export const {setPizzas} = PizzaSlice.actions;

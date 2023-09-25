@@ -43,26 +43,27 @@ export default function CartComponent() {
                   </Col>
                   <Col xs={6} md={2}>
                     <div className="box-qt">
-                      <Button 
+                      <Button
                         onClick={() => {
-
-                            dispatch(PizzaSlice.actions.pizzaAddQuantityStore(pizzaInCart))
-
-                          console.log("LOOOKKK", pizzaInCart)
+                          dispatch(
+                            PizzaSlice.actions.pizzaAddQuantityStore(
+                              pizzaInCart
+                            )
+                          );
                         }}
                       >
                         +
                       </Button>
                       <p>{pizzaInCart.quantity}</p>
-                      <Button >
-                        -
-                      </Button>
-                      {/* <Image className="btn-add" src="assets/image/add.png" onClick={pizzaAddQuantity}/>
-                      <p>1</p>
-                      <Image
-                        className="btn-remove"
-                        src="assets/image/remove.png"
-                      /> */}
+                      <Button
+                      onClick={() => {
+                        dispatch(
+                          PizzaSlice.actions.pizzaRemoveQuantityStore(
+                            pizzaInCart
+                          )
+                        );
+                      }}
+                      >-</Button>
                     </div>
                   </Col>
                   <Col xs={6} md={2}>
