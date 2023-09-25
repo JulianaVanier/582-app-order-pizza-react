@@ -63,6 +63,7 @@ export default function PopUpSize(props) {
     }
   };
 
+
   useEffect(() => {
     handleShow();
   }, []);

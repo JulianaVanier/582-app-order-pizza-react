@@ -45,13 +45,23 @@ export const PizzaSlice = createSlice({
         removePizzasInCart: (state, action) => {
             state.pizzasInCart = state.pizzasInCart.filter((pizza) => pizza._id !== action.payload._id);
         },
-    },
-});
+
+        pizzaAddQuantityStore: (state, action) => {
+            console.log("receiving in pizzaAddQuantityStore", state);
+            for (let i = 0; i < state.pizzasInCart.length; i++) {
+                if (state.pizzasInCart[i]._id === action.payload._id) {
+                    state.pizzasInCart[i].quantity++;
+                    console.log("pizzasInCart[i].quantity", state.pizzasInCart[i].quantity);
+                }
+            }
+        }
+    },});
 //export to have acess 
 export const {setPizzas} = PizzaSlice.actions;
 export const {setSizeSelectedPrice} = PizzaSlice.actions;
 export const {setSizeSelected} = PizzaSlice.actions;
 export const {addPizzasInCart} = PizzaSlice.actions;
 export const {addPizzaToCustomize} = PizzaSlice.actions;
+export const {pizzaAddQuantityStore} = PizzaSlice.actions;
 
 export default PizzaSlice.reducer;

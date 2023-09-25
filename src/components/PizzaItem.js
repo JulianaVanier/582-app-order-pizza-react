@@ -3,13 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
-import Row from 'react-bootstrap/Row';
-import { Image } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { PizzaSlice } from '../features/PizzaStore';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import PopUpSize from './PopUpSize';
 
 
