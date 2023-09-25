@@ -8,6 +8,7 @@ export const PizzaSlice = createSlice({
         sizeSelected: null,
         pizzasInCart: [],
         pizzaToCustomize: [],
+        totalPrice: 0,
 
         // actual value of states
     },
@@ -51,6 +52,7 @@ export const PizzaSlice = createSlice({
                 if (state.pizzasInCart[i]._id === action.payload._id) {
                     state.pizzasInCart[i].quantity++;
                     console.log("pizzasInCart[i].quantity", state.pizzasInCart[i].quantity);
+                    // state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
                 }
             }
         },
@@ -59,14 +61,27 @@ export const PizzaSlice = createSlice({
             if (action.payload.quantity === 1) {
                 state.pizzasInCart = state.pizzasInCart.filter((pizza) => pizza._id !== action.payload._id);
             }
-            
+
             for (let i = 0; i < state.pizzasInCart.length; i++) {
                 if (state.pizzasInCart[i]._id === action.payload._id) {
                     state.pizzasInCart[i].quantity--;
                     console.log("pizzasInCart[i].quantity", state.pizzasInCart[i].quantity);
+                    // state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
                 }
             }
         },
+        // calcTotalPrice: (state, action) => {
+        //     // state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
+        //     console.log("ANTES", state.totalPrice);
+        //     // let total = 0;
+        //     state.totalPrice = 0;
+        //     console.log("DEPOIS", state.totalPrice);
+        //     for (let i = 0; i < state.pizzasInCart.length; i++) {
+        //         state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
+        //         console.log("AQUI TOTAL PRICE", state.totalPrice);
+        //     }
+        //     // state.totalPrice = total;
+        // }
     },});
 //export to have acess 
 export const {setPizzas} = PizzaSlice.actions;
@@ -75,5 +90,8 @@ export const {setSizeSelected} = PizzaSlice.actions;
 export const {addPizzasInCart} = PizzaSlice.actions;
 export const {addPizzaToCustomize} = PizzaSlice.actions;
 export const {pizzaAddQuantityStore} = PizzaSlice.actions;
+export const {pizzaRemoveQuantityStore} = PizzaSlice.actions;
+export const {removePizzasInCart} = PizzaSlice.actions;
+export const {calcTotalPrice} = PizzaSlice.actions;
 
 export default PizzaSlice.reducer;

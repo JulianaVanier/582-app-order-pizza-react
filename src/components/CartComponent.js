@@ -7,11 +7,29 @@ import { Container } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { PizzaSlice } from "../features/PizzaStore";
+import { useState } from "react";
 
 export default function CartComponent() {
   const pizzasInCart = useSelector((state) => state.pizza.pizzasInCart);
   console.log("pizzasInCart no carrinho", pizzasInCart);
   const dispatch = useDispatch();
+  // const totalPrice = useSelector((state) => state.pizza.totalPrice);
+
+
+const getTotalPrice = () => {
+    let totalPrice = 0;
+    for (let i = 0; i < pizzasInCart.length; i++) {
+      totalPrice = pizzasInCart[i].sizeSelectedPrice * pizzasInCart[i].quantity;
+      console.log("AQUI TOTAL PRICE", totalPrice);
+    }
+    return totalPrice;
+  };
+
+  // function getTotalPrice() {
+  //   dispatch(PizzaSlice.actions.calcTotalPrice(pizzasInCart));
+  //   return totalPrice;
+  // };
+
 
   // const pizzaAddQuantity = () => {
   //   console.log("Here btn add inside func", pizzasInCart);
@@ -38,7 +56,7 @@ export default function CartComponent() {
                   </Col>
                   <Col xs={6} md={2}>
                     <div className="box-price">
-                      <p> ${pizzaInCart.sizeSelectedPrice}</p>
+                      <p> ${getTotalPrice()}</p>
                     </div>
                   </Col>
                   <Col xs={6} md={2}>
@@ -88,7 +106,7 @@ export default function CartComponent() {
       <Container>
         <Row>
           <Col xs={6} md={12}>
-            Total Price: $
+            <p>Total Price: </p>
           </Col>
         </Row>
       </Container>
