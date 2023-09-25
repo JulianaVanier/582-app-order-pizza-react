@@ -13,6 +13,11 @@ export default function CartComponent() {
   console.log("pizzasInCart no carrinho", pizzasInCart);
   const dispatch = useDispatch();
 
+  // const pizzaAddQuantity = () => {
+  //   console.log("Here btn add inside func", pizzasInCart);
+  //   dispatch(PizzaSlice.actions.pizzaAddQuantityStore(pizzasInCart));
+  // };
+
   // const removePizzaFromCart = () => {
   //   dispatch(PizzaSlice.actions.removePizzasInCart(pizzasInCart));
   // }
@@ -23,27 +28,41 @@ export default function CartComponent() {
 
       <div className="container text-center ">
         <div className="row gap-0 row-gap-3">
-          {pizzasInCart.map((pizzasInCart, index) => {
-            console.log("pizza OLHHAAAA", pizzasInCart);
+          {pizzasInCart.map((pizzaInCart) => {
+            console.log("pizza OLHHAAAA", pizzaInCart);
             return (
-              <Container className="cart">
+              <Container className="cart" key={pizzaInCart._id}>
                 <Row>
                   <Col xs={6} md={6}>
-                    <PizzaItem key={index} obj={pizzasInCart} />
+                    <PizzaItem obj={pizzaInCart} />
                   </Col>
                   <Col xs={6} md={2}>
                     <div className="box-price">
-                      <p>${pizzasInCart.sizeSelectedPrice}</p>
+                      <p> ${pizzaInCart.sizeSelectedPrice}</p>
                     </div>
                   </Col>
                   <Col xs={6} md={2}>
                     <div className="box-qt">
-                      <Image className="btn-add" src="assets/image/add.png" />
+                      <Button 
+                        onClick={() => {
+
+                            dispatch(PizzaSlice.actions.pizzaAddQuantityStore(pizzaInCart))
+
+                          console.log("LOOOKKK", pizzaInCart)
+                        }}
+                      >
+                        +
+                      </Button>
+                      <p>{pizzaInCart.quantity}</p>
+                      <Button >
+                        -
+                      </Button>
+                      {/* <Image className="btn-add" src="assets/image/add.png" onClick={pizzaAddQuantity}/>
                       <p>1</p>
                       <Image
                         className="btn-remove"
                         src="assets/image/remove.png"
-                      />
+                      /> */}
                     </div>
                   </Col>
                   <Col xs={6} md={2}>
@@ -51,7 +70,7 @@ export default function CartComponent() {
                       <Image
                         onClick={() => {
                           dispatch(
-                            PizzaSlice.actions.removePizzasInCart(pizzasInCart)
+                            PizzaSlice.actions.removePizzasInCart(pizzaInCart)
                           );
                         }}
                         className="btn-delete"
