@@ -1,8 +1,12 @@
 import React from 'react'
+import IngredientList from './IngredientList'
 
 function CustomPizzaView() {
   return (
-    <div>CustomPizzaView</div>
+    <>
+        <div>CustomPizzaView</div>
+    <IngredientList />
+    </>
   )
 }
 

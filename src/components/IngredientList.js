@@ -1,56 +1,53 @@
 import { useEffect } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 // import { PizzaSlice, setPizzas } from '../features/PizzaStore';
-import { IngredientSlice, setIngredient } from '../features/IngredientStore';
+import { IngredientSlice, setIngredient } from "../features/IngredientStore";
 import IngredientItem from "./IngredientItem";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
+import { Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 export default function IngredientList() {
-    // const pizza = useSelector((state) => state.pizza.pizzas)
-    const ingredient = useSelector((state) => state.ingredient.ingredients)
-    const dispatch = useDispatch();
+  // const pizza = useSelector((state) => state.pizza.pizzas)
+  const ingredient = useSelector((state) => state.ingredient.ingredients);
+  const dispatch = useDispatch();
 
-    const fetchIngredients = () => {
-        console.log("fetching Ingredients");
-        fetch('https://bookish-rotary-phone-j6j6g76r445255vv-3000.app.github.dev/customizepizza')
-            .then((response) => response.json())
-            .then((jsonIngredients) => {
-                if (Array.isArray(jsonIngredients)) {
-                    console.log("JSON", jsonIngredients);
-                    {dispatch(IngredientSlice.actions.setIngredient(jsonIngredients))}
-                    console.log("dispatched",setIngredient(jsonIngredients) );
+  const fetchIngredients = () => {
+    console.log("fetching Ingredients");
+    fetch("http://localhost:3000/customizepizza")
+      .then((response) => response.json())
+      .then((jsonIngredients) => {
+        if (Array.isArray(jsonIngredients)) {
+          console.log("JSON", jsonIngredients);
+          {
+            dispatch(IngredientSlice.actions.setIngredient(jsonIngredients));
+          }
+          console.log("dispatched", setIngredient(jsonIngredients));
+        } else {
+          console.error("JSON invalid.");
+        }
+      })
 
-                } else {
-                    console.error("JSON invalid.");
-                }
-            })
-            
-        .catch((error) => console.log(error));
-    };
+      .catch((error) => console.log(error));
+  };
 
-    useEffect(() => {
-        fetchIngredients();
-    }, []);
-    
-    return (
+  useEffect(() => {
+    fetchIngredients();
+  }, []);
 
-<>
- {/* <h1>Menu</h1>
+  return (
+    <>
 
- {pizza.map((pizza, index) => {
-    console.log("pizza", pizza);
-    return <PizzaItem key={index} obj={pizza} />;
-})} */}
+      <h1>Ingredients</h1>
 
- <h1>Ingredients</h1>
-
- {ingredient.map((ingredient, index) => {
-    console.log("ingredient", ingredient);
-    return <IngredientItem key={index} obj={ingredient} />;
-})}
-
-</>
-    );
+      <Container>
+        <Row>
+          {ingredient.map((ingredient, index) => {
+            console.log("ingredient", ingredient);
+            return <IngredientItem key={index} obj={ingredient} />;
+          })}
+        </Row>
+      </Container>
+    </>
+  );
 }
-
-
