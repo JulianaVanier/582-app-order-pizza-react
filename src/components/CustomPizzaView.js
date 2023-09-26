@@ -1,11 +1,11 @@
 import React from 'react'
-import IngredientList from './IngredientList'
+import CustomPizza from './CustomPizza'
 
 function CustomPizzaView() {
   return (
     <>
-        <div>CustomPizzaView</div>
-    <IngredientList />
+    <h1>Custom Pizza</h1>
+    <CustomPizza />
     </>
   )
 }

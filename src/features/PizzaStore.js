@@ -39,7 +39,7 @@ export const PizzaSlice = createSlice({
             console.log("state CART AFTER", state.pizzasInCart);
         },
         addPizzaToCustomize: (state, action) => { 
-            state.pizzaToCustomize = action.payload;
+            state.pizzaToCustomize = [...state.pizzaToCustomize, action.payload];
             console.log("state CUSTOMIZE", state.pizzaToCustomize);
         },
         removePizzasInCart: (state, action) => {
