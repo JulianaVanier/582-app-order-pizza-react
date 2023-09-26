@@ -2,6 +2,9 @@ import React from 'react'
 import IngredientList from './IngredientList'
 import PizzaItem from './PizzaItem'
 import { useSelector } from 'react-redux'
+import { Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 
 export default function CustomPizzaView() {
@@ -12,10 +15,12 @@ export default function CustomPizzaView() {
   // console.log("pizzaaaaaaaaa", pizza)
   return (
     <>
-    <div>
+    <div className='box-custom-pizza'>
     {pizzaToCustomize.map((pizza) => {
           console.log("pizzaaaaaaaaa", pizza)
-      return <PizzaItem obj={pizza} />
+      return (
+        <PizzaItem obj={pizza} />
+    )
     }
     )}
     </div>
