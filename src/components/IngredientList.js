@@ -7,10 +7,11 @@ import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 
-export default function IngredientList() {
+export default function IngredientList(props) {
   // const pizza = useSelector((state) => state.pizza.pizzas)
   const ingredient = useSelector((state) => state.ingredient.ingredients);
   const dispatch = useDispatch();
+  const pizzaId = props.obj;
 
   const fetchIngredients = () => {
     console.log("fetching Ingredients");
@@ -38,13 +39,13 @@ export default function IngredientList() {
   return (
     <>
 
-      <h1>Ingredients</h1>
+      <h1>AQUIIIIIIIIIIIIIIII{pizzaId.id}</h1>
 
       <Container>
         <Row>
           {ingredient.map((ingredient, index) => {
             console.log("ingredient", ingredient);
-            return <IngredientItem key={index} obj={ingredient} />;
+            return <IngredientItem key={index} obj={ingredient} pizzaId={pizzaId.id} />;
           })}
         </Row>
       </Container>
