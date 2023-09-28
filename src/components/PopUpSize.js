@@ -6,6 +6,11 @@ import { PizzaSlice } from "../features/PizzaStore";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import CustomPizza from "./CustomPizza";
+
+import { useNavigation } from "react-router-dom";
 
 export default function PopUpSize(props) {
   const dispatch = useDispatch();
@@ -14,6 +19,11 @@ export default function PopUpSize(props) {
   );
   const sizeSelected = useSelector((state) => state.pizza.sizeSelected);
   const navigate = useNavigate();
+  // const navigation = useNavigation();
+
+  // const dataToPass = {
+  //   pizzaId: props.obj._id,
+  // };
 
   //function to clear size selected when close pop up
   const clearSizeSelected = () => {
@@ -59,6 +69,8 @@ export default function PopUpSize(props) {
       };
       console.log("pizzaToCustomize", pizzaToCustomize);
       dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaToCustomize));
+      // navigation.navigate("/custompizza", { data: dataToPass });
+
       navigate("/custompizza");
     }
   };
