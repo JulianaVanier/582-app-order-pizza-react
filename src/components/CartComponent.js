@@ -69,7 +69,8 @@ function placeOrder() {
     })
     .then((data) => {
           // this.pizzaStore.clearCart();
-          navigate("/orderplaced");
+          // navigate("/orderplaced");
+          navigate(`/orderplaced?orderNumber=${orderToDb.orderNumber}`);
           // history.push("/orderplaced");
     });
 

@@ -15,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CartView from './components/CartView';
 import CustomPizzaView from './components/CustomPizzaView';
 import MenuPizza from './components/MenuPizza';
+import OrderPlacedView from './components/OrderPlacedView';
 
 const store = configureStore({
   reducer: {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
     path: "/orderplaced",
     element: (
       <div>
-        <MenuPizza />
+        <OrderPlacedView />
       </div>
     ),
   },
