@@ -1,10 +1,11 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 function OrderPlacedView() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const orderNumber = urlParams.get('orderNumber');
-    console.log('Order Number:', orderNumber);
+    const location = useLocation();
+    const orderNumber = new URLSearchParams(location.search).get('orderNumber');
+
   return (
     <Container>
         <h1>Order Placed</h1>
