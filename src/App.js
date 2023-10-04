@@ -4,6 +4,7 @@ import IngredientList from './components/IngredientList';
 import HeaderApp from './components/HeaderApp';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from 'react-bootstrap';
+import PreviewOrder from './components/PreviewOrder';
 
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
     // <div className="App">
     <Container>
       <HeaderApp />
+      <PreviewOrder />
       <MenuPizza />
+
       {/* <IngredientList /> */}
     </Container>
     // </div>

@@ -1,0 +1,67 @@
+import React from 'react'
+import { useState } from "react";
+import { Button } from "react-bootstrap";
+
+function PreviewOrder() {
+
+    const [orderNumber, setOrderNumber] = useState("");
+    // const orderStore = useSelector((state) => state.order.setOrder);
+    // const previewOrders = orderStore.previewOrders;
+    // const clearCart = usePizzaStore((state) => state.clearCart);
+    // const pizzaStore = useSelector((state) => state.pizza.pizzasInCart);
+
+    // const history = useHistory();
+  
+    const findOrderNumber = () => {
+      console.log("findOrderNumber", orderNumber);
+      fetch(
+        "http://localhost:3000/previeworder/" +
+        orderNumber
+      )
+      .then((response) => response.json())
+      .then((json) => {
+        console.log("Inside Fetch", json);
+        // clearCart();
+        
+  
+        for (let pizza of json.pizza) {
+          console.log("Aqui entrou", pizza);
+          if (pizza.custom === true) {
+            console.log("ENTROU CUSTOM", pizza);
+            // pizzaStore.addCustomToCart(pizza);
+          } else {
+            console.log("ENTROU NORMAL", pizza);
+            // pizzaStore.addPizzaToCart(
+            //   pizza,
+            //   pizza.priceSelected,
+            //   pizza.sizeSelected
+            // );
+          }
+          // history.push("/cart/" + pizza.id);
+        }
+      });
+    };
+
+  return (
+    <>
+    <div>PreviewOrder</div>
+    <div className="container">
+      <div className="box-input">
+        <div className="input-order-number">
+          <label htmlFor="orderNumber">Order Number:</label>
+          <input
+            type="text"
+            id="orderNumber"
+            value={orderNumber}
+            onChange={(e) => setOrderNumber(e.target.value)}
+            required
+          />
+          <Button variant="danger" onClick={findOrderNumber}>Search</Button>
+        </div>
+      </div>
+    </div>
+    </>
+  );
+}
+
+export default PreviewOrder
