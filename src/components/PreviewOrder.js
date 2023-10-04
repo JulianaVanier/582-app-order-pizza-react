@@ -1,6 +1,10 @@
 import React from 'react'
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { PizzaSlice } from "../features/PizzaStore";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function PreviewOrder() {
 
@@ -9,6 +13,9 @@ function PreviewOrder() {
     // const previewOrders = orderStore.previewOrders;
     // const clearCart = usePizzaStore((state) => state.clearCart);
     // const pizzaStore = useSelector((state) => state.pizza.pizzasInCart);
+    const dispach = useDispatch();
+    const pizzaStore = useSelector((state) => state.pizza.pizzasInCart);
+    const navigate = useNavigate();
 
     // const history = useHistory();
   
@@ -28,9 +35,16 @@ function PreviewOrder() {
           console.log("Aqui entrou", pizza);
           if (pizza.custom === true) {
             console.log("ENTROU CUSTOM", pizza);
+            dispach(PizzaSlice.actions.addPizzasInCart(pizza)
+            );
+            navigate("/cart");
             // pizzaStore.addCustomToCart(pizza);
           } else {
             console.log("ENTROU NORMAL", pizza);
+            dispach(PizzaSlice.actions.addPizzasInCart(pizza)
+            );
+            console.log("pizza no carrinhooooooo", pizzaStore);
+            navigate("/cart");
             // pizzaStore.addPizzaToCart(
             //   pizza,
             //   pizza.priceSelected,
