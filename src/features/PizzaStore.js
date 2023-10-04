@@ -69,6 +69,10 @@ export const PizzaSlice = createSlice({
                 }
             }
         },
+        clearCart: (state) => {
+            state.pizzasInCart = [];
+        }
+
     },});
 //export to have acess 
 export const {setPizzas} = PizzaSlice.actions;
@@ -80,5 +84,6 @@ export const {pizzaAddQuantityStore} = PizzaSlice.actions;
 export const {pizzaRemoveQuantityStore} = PizzaSlice.actions;
 export const {removePizzasInCart} = PizzaSlice.actions;
 export const {calcTotalPrice} = PizzaSlice.actions;
+export const {clearCart} = PizzaSlice.actions;
 
 export default PizzaSlice.reducer;
