@@ -16,6 +16,7 @@ export default function CartComponent() {
   const dispatch = useDispatch();
   // const history = useHistory();
   const navigate = useNavigate();
+  const pizzaStore = useSelector((state) => state.pizza);
 
 
 function calcTotalPrice(pizzaInCart) {
@@ -70,6 +71,7 @@ function placeOrder() {
     .then((data) => {
           // this.pizzaStore.clearCart();
           // navigate("/orderplaced");
+          dispatch(PizzaSlice.actions.clearCart());
           navigate(`/orderplaced?orderNumber=${orderToDb.orderNumber}`);
           // history.push("/orderplaced");
     });
