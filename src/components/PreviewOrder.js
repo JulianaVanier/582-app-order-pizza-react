@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { PizzaSlice } from "../features/PizzaStore";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { InputGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+
 
 function PreviewOrder() {
 
@@ -58,11 +61,26 @@ function PreviewOrder() {
 
   return (
     <>
-    <div>PreviewOrder</div>
+    
+    <h4>PreviewOrder</h4>
     <div className="container">
       <div className="box-input">
         <div className="input-order-number">
-          <label htmlFor="orderNumber">Order Number:</label>
+        <InputGroup size="lg" className="mb-3"
+        type="text"
+        id="orderNumber"
+        value={orderNumber}
+        onChange={(e) => setOrderNumber(e.target.value)}
+        required
+        >
+        <InputGroup.Text id="inputGroup-sizing-sm">Order Number:</InputGroup.Text>
+        <Form.Control
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+        />
+          </InputGroup>
+          <Button variant="danger" onClick={findOrderNumber}>Search</Button>
+          {/* <label htmlFor="orderNumber">Order Number:</label>
           <input
             type="text"
             id="orderNumber"
@@ -70,7 +88,7 @@ function PreviewOrder() {
             onChange={(e) => setOrderNumber(e.target.value)}
             required
           />
-          <Button variant="danger" onClick={findOrderNumber}>Search</Button>
+          <Button variant="danger" onClick={findOrderNumber}>Search</Button> */}
         </div>
       </div>
     </div>

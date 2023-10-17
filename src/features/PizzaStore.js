@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import { act } from 'react-dom/test-utils';
 
 export const PizzaSlice = createSlice({
     name: 'pizza',
@@ -8,6 +9,7 @@ export const PizzaSlice = createSlice({
         sizeSelected: null,
         pizzasInCart: [],
         pizzaToCustomize: [],
+
 
         // actual value of states
     },
@@ -71,8 +73,34 @@ export const PizzaSlice = createSlice({
         },
         clearCart: (state) => {
             state.pizzasInCart = [];
-        }
+        },
 
+        // addIngredientPizzaToCustomize: (state, action) => {
+        //     // console.log("receiving in addIngredientPizzaToCustomize", state);
+        //     const { pizzaToCustomize, ingredient } = action.payload;
+
+        //     console.log("Pizza ACTION", state.ingredient);
+        //     console.log("INGREDIENTE ACTION", state.pizzaToCustomize);
+
+        //     console.log("ACTION INGREDIENT", action.payload.ingredient);
+        //     console.log("ACTION PIZZAAAA", action.payload.pizzaToCustomize);
+        //     // console.log("RESULTADOOOO 1111111", state.pizzaToCustomize);
+        //     // state.pizzaToCustomize.ingredients = action.payload.ingredient;
+        //     // console.log("RESULTADOOOO 222222", state.pizzaToCustomize);
+ 
+
+
+        //     // for (let i = 0; i < state.pizzaToCustomize.length; i++) {
+        //     //     console.log("state.pizzaToCustomize[i]._id", state.pizzaToCustomize[i]._id);
+        //     //     console.log("action.payload._id", action.payload._id);
+        //     //     if (state.pizzaToCustomize[i]._id === action.payload._id) {
+        //     //         console.log("state.pizzaToCustomize[i].ingredient", state.pizzaToCustomize[i].ingredient);
+        //     //         state.pizzaToCustomize[i].ingredient.push(action.payload);
+        //     //         console.log("AQUI ADDED INGREDIENT", state.pizzaToCustomize[i]);
+        //     //         // state.totalPrice = state.pizzasInCart[i].sizeSelectedPrice * state.pizzasInCart[i].quantity;
+        //     //     }
+        //     // }
+        // },
     },});
 //export to have acess 
 export const {setPizzas} = PizzaSlice.actions;
