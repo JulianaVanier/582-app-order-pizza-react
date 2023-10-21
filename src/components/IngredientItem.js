@@ -51,6 +51,7 @@ function IngredientItem(props) {
     pizzaCustomWithIngredient.sizeSelectedPrice += ingredient.price;
     pizzaCustomWithIngredient.sizeSelectedPrice = parseFloat(pizzaCustomWithIngredient.sizeSelectedPrice.toFixed(2));
 
+
     dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaCustomWithIngredient));
 
 
@@ -79,11 +80,11 @@ function IngredientItem(props) {
             {/* <Button className='btn-add-chose-size' variant="danger" onClick={() => toggleIngredient(ingredient, pizzaId, pizzaToCustomize)}>
             Add
             </Button> */}
-            <div className="image-top-pizzaCustom">
+            {/* <div className="image-top-pizzaCustom">
               {displayIngTop && (
                 <img src={ingredient.imageCustomReact} alt={ingredient.title} />
               )}
-            </div>
+            </div> */}
           </Card.Body>
         </Card>
       </Col>

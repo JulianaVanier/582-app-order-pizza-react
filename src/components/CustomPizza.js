@@ -20,7 +20,9 @@ export default function CustomPizzaView() {
     <>
       <div className="box-custom-pizza">
         <PizzaItem obj={pizzaToCustomize} />
-        <p>Item Total: {pizzaToCustomize.sizeSelectedPrice}</p>
+      </div>
+      <div className="total-price">
+      <p>Item Total: {pizzaToCustomize.sizeSelectedPrice}</p>
       </div>
       <IngredientList obj={pizzaToCustomize} />
     </>

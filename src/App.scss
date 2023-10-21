@@ -1,3 +1,8 @@
+// .card-img-top {
+//   width: 100%;
+//   position: relative; /* Define a posição relativa para o elemento pai */
+//   width: 18rem;
+// }
 
 .menu{
   .card{
@@ -5,15 +10,16 @@
   }
 }
 
-.ingredients{
-  .image-top-pizzaCustom{
-    width: 100%;
-    height: 10rem;
+
+  .image-top-pizzaCustom img{
+    width: 20rem;
+    max-width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
   }
-}
+
 .cart{
   .card{
     // background-color: red;
@@ -89,14 +95,32 @@
   align-items: center;
   margin: auto;
   width: 20rem;
-  .card-img-top{
-    position: relative;
-  }
+  // .card-img-top{
+  //   position: relative;
+  // }
 }
 
 .box-input{
   width: 400px;
   margin: auto;
+}
+
+.total-price{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 20rem;
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+
+}
+
+.total-price p{
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .App {
