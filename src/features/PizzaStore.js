@@ -24,7 +24,7 @@ export const PizzaSlice = createSlice({
         },
         setSizeSelectedPrice: (state, action) => {
             state.sizeSelectedPrice = action.payload;
-            state.sizeSelected = action.payload;
+            // state.sizeSelected = action.payload;
             console.log("state setSizeSelectedPrice", state.sizeSelectedPrice);
         },
         setSizeSelected: (state, action) => {
@@ -42,7 +42,8 @@ export const PizzaSlice = createSlice({
         },
         addPizzaToCustomize: (state, action) => { 
             state.pizzaToCustomize = {...state.pizzaToCustomize, ...action.payload};
-            console.log("addPizzaToCustomize", state.pizzaToCustomize);
+
+                console.log("addPizzaToCustomize", state.pizzaToCustomize);
         },
         removePizzasInCart: (state, action) => {
             state.pizzasInCart = state.pizzasInCart.filter((pizza) => pizza._id !== action.payload._id);
@@ -113,5 +114,6 @@ export const {pizzaRemoveQuantityStore} = PizzaSlice.actions;
 export const {removePizzasInCart} = PizzaSlice.actions;
 export const {calcTotalPrice} = PizzaSlice.actions;
 export const {clearCart} = PizzaSlice.actions;
+
 
 export default PizzaSlice.reducer;

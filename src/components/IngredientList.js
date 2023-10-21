@@ -39,7 +39,6 @@ export default function IngredientList(props) {
   return (
     <>
 
-      <h1>AQUIIIIIIIIIIIIIIII{pizzaId.id}</h1>
 
       <Container>
         <Row>
