@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { PizzaSlice } from "../features/PizzaStore";
+import { Row } from "react-bootstrap";
 
 function IngredientItem(props) {
   const pizzaToCustomize = useSelector((state) => state.pizza.pizzaToCustomize);
@@ -33,6 +34,7 @@ function IngredientItem(props) {
         );
 
       pizzaCustomWithIngredient.sizeSelectedPrice -= ingredient.price;
+      pizzaCustomWithIngredient.sizeSelectedPrice = parseFloat(pizzaCustomWithIngredient.sizeSelectedPrice.toFixed(2));
       
       dispatch(
         PizzaSlice.actions.addPizzaToCustomize(pizzaCustomWithIngredient)
@@ -47,6 +49,7 @@ function IngredientItem(props) {
       ingredient,
     ];
     pizzaCustomWithIngredient.sizeSelectedPrice += ingredient.price;
+    pizzaCustomWithIngredient.sizeSelectedPrice = parseFloat(pizzaCustomWithIngredient.sizeSelectedPrice.toFixed(2));
 
     dispatch(PizzaSlice.actions.addPizzaToCustomize(pizzaCustomWithIngredient));
 
@@ -57,7 +60,7 @@ function IngredientItem(props) {
   return (
     <>
       {/* <h1>{props}</h1> */}
-      <Col className="ingredients">
+      <Col className="ingredients" md={{ span: 1, offset: 1 }}>
         <Card
           style={{ width: "10rem" }}
           onClick={() => toggleIngredient(ingredient, pizzaToCustomize)}
