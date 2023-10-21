@@ -48,7 +48,7 @@ export default function PopUpSize(props) {
         sizeSelected: sizeSelected,
         sizeSelectedPrice: sizeSelectedPrice,
         imageReact: props.obj.imageReact,
-        ingredient: props.obj.ingredient,
+        ingredient: [...props.obj.ingredient],
         quantity: 1,
       };
       console.log("pizzaToCart", pizzaToCart);
@@ -64,7 +64,7 @@ export default function PopUpSize(props) {
         sizeSelected: sizeSelected,
         sizeSelectedPrice: sizeSelectedPrice,
         imageReact: props.obj.imageReact,
-        ingredient: props.obj.ingredient,
+        ingredient: [...props.obj.ingredient],
         quantity: 1,
       };
       console.log("pizzaToCustomize", pizzaToCustomize);

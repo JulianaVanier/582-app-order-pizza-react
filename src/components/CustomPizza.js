@@ -11,36 +11,18 @@ export default function CustomPizzaView() {
   const pizzaToCustomize = useSelector((state) => state.pizza.pizzaToCustomize);
   // const ingredient = useSelector((state) => state.pizza.ingredient);
   // const pizzaId = pizzaToCustomize.id;
-  const pizzaArray = pizzaToCustomize.map((pizza) => {
-    return pizza;
-  });
-  const pizza = pizzaArray[0];
-  // console.log("testttttttttttt", test);
-
-  // function displayIngredient  (ingredientId) {
-  //   for (let i=0; i<ingredient.length; i++) {
-  //     if (ingredient[i].id == ingredientId) {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
-
-  // const pizza = pizzasToCustomize.map((pizza) => {
+  // const pizzaArray = pizzaToCustomize.map((pizza) => {
   //   return pizza;
-  // })
-  // console.log("pizzaaaaaaaaa", pizza)
-  //   const route = useRoute();
-  //   const {data} = route.params;
+  // });
+  // const pizza = pizzaArray[0];
 
-  //   console.log("dataaaaaaaaa", data)
   return (
     <>
       <div className="box-custom-pizza">
-        <PizzaItem obj={pizza} />
-        <p>Item Total: {pizza.sizeSelectedPrice}</p>
+        <PizzaItem obj={pizzaToCustomize} />
+        <p>Item Total: {pizzaToCustomize.sizeSelectedPrice}</p>
       </div>
-      <IngredientList obj={pizza} />
+      <IngredientList obj={pizzaToCustomize} />
     </>
   );
 }

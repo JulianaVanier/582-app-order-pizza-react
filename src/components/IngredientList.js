@@ -44,7 +44,7 @@ export default function IngredientList(props) {
       <Container>
         <Row>
           {ingredient.map((ingredient, index) => {
-            console.log("ingredient", ingredient);
+            // console.log("ingredient", ingredient);
             return <IngredientItem key={index} obj={ingredient} pizzaId={pizzaId.id} />;
           })}
         </Row>

@@ -8,7 +8,7 @@ export const PizzaSlice = createSlice({
         sizeSelectedPrice: null,
         sizeSelected: null,
         pizzasInCart: [],
-        pizzaToCustomize: [],
+        pizzaToCustomize: {},
 
 
         // actual value of states
@@ -25,11 +25,11 @@ export const PizzaSlice = createSlice({
         setSizeSelectedPrice: (state, action) => {
             state.sizeSelectedPrice = action.payload;
             state.sizeSelected = action.payload;
-            console.log("state", state.sizeSelectedPrice);
+            console.log("state setSizeSelectedPrice", state.sizeSelectedPrice);
         },
         setSizeSelected: (state, action) => {
             state.sizeSelected = action.payload;
-            console.log("state", state.sizeSelected);
+            console.log("state setSizeSelected", state.sizeSelected);
         },
         addPizzasInCart: (state, action) => {
             console.log("state CART BEFORE 1", action.payload);
@@ -41,8 +41,8 @@ export const PizzaSlice = createSlice({
             console.log("state CART AFTER", state.pizzasInCart);
         },
         addPizzaToCustomize: (state, action) => { 
-            state.pizzaToCustomize = [...state.pizzaToCustomize, action.payload];
-            console.log("state CUSTOMIZE", state.pizzaToCustomize);
+            state.pizzaToCustomize = {...state.pizzaToCustomize, ...action.payload};
+            console.log("addPizzaToCustomize", state.pizzaToCustomize);
         },
         removePizzasInCart: (state, action) => {
             state.pizzasInCart = state.pizzasInCart.filter((pizza) => pizza._id !== action.payload._id);

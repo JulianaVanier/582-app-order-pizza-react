@@ -17,84 +17,83 @@ function IngredientItem(props) {
   const dispatch = useDispatch();
   const pizzaInCart = useSelector((state) => state.pizza.pizzasInCart);
 
-
-
-
   // const [showIngredientsTop, setShowIngredientsTop] = React.useState(false);
   // const displayIngredientsTop = () => setShowIngredientsTop(!showIngredientsTop)
 
-  console.log("pizzaaaaaaaaa22222222222222222", pizzaId);
 
   function toggleIngredient(ingredient, pizzaId, pizzaToCustomize) {
-    console.log("deuuuuuuuuuuuuu ing", ingredient);
-    console.log("deuuuuuuuuuuuuu idp", pizzaId);
-    console.log("deuuuuuuuuuuuuu cust", pizzaToCustomize);
-    var pizzaCustomWithIngredient = null;
+    console.log("toggleIngredient ingredient", ingredient);
+    console.log("toggleIngredient pizzaId", pizzaId);
+    console.log("toggleIngredient pizzaToCustomize", pizzaToCustomize);
+    var pizzaCustomWithIngredient = {...pizzaToCustomize};
 
 
- 
 
     // console.log("pizzaToCustomize", pizzaToCustomize);
     // console.log("pizzaId", pizzaId);
     // console.log("ingredient", ingredient);
-    for (let i = 0; i < pizzaToCustomize.length; i++) {
-      // console.log("pizzaToCustomize[i].id", pizzaToCustomize[i].id);
-      if (pizzaToCustomize[i].id == pizzaId) {
-        pizzaCustomWithIngredient = pizzaToCustomize[i];
-      }
-    }
+    // for (let i = 0; i < pizzaToCustomize.length; i++) {
+    //   // console.log("pizzaToCustomize[i].id", pizzaToCustomize[i].id);
+    //   if (pizzaToCustomize[i].id == pizzaId) {
+    //     pizzaCustomWithIngredient = pizzaToCustomize[i];
+    //   }
+    // }
 
     // condition if ingredient already exist in pizzaCustomWithIngredient
-    for (let i = 0; i < pizzaCustomWithIngredient.ingredient.length; i++) {
-      // console.log(
-      //   "lengthhhhhhhhhhh",
-      //   pizzaCustomWithIngredient.ingredient.length
-      // );
-      console.log("ID INGREDIENT", ingredient._id);
-      console.log("ID INGREDIENT PIZZA CUSTOM", pizzaCustomWithIngredient);
-      if (pizzaCustomWithIngredient.ingredient[i]._id === ingredient._id) {
-        console.log("ingredient exist");
-        const updatedPizza = { ...pizzaCustomWithIngredient };
-        updatedPizza.ingredient = updatedPizza.ingredient.filter(
-          (ing) => ing._id !== ingredient._id
-        );
-        updatedPizza.sizeSelectedPrice -= ingredient.price;
-        pizzaCustomWithIngredient = updatedPizza;
-        return;
-      }
-      console.log("Aqui a pizza antes de ir", pizzaToCustomize);
-      
-      // dispach(PizzaSlice.actions.addIngredientPizzaToCustomize(pizzaCustomWithIngredient));
-      // dispach(PizzaSlice.actions.addIngredientPizzaToCustomize(ingredient));
-      
-      // var updatedPizzaCopy = {...pizzaCustomWithIngredient};
-      // console.log("updatedPizzaCopy", updatedPizzaCopy);
-      // console.log("NEW INGREDIENT", ingredient);
-      // console.log("SEU ANTES", updatedPizzaCopy.ingredient);
-      // updatedPizzaCopy.ingredient = [...updatedPizzaCopy.ingredient, ingredient];
-      // console.log("SEU DEPOIS", updatedPizzaCopy.ingredient);
+    // for (let i = 0; i < pizzaCustomWithIngredient.ingredient.length; i++) {
+    //   console.log("ID INGREDIENT", ingredient._id);
+    //   console.log("ID INGREDIENT PIZZA CUSTOM", pizzaCustomWithIngredient);
+    //   if (pizzaCustomWithIngredient.ingredient[i]._id !== ingredient._id)
+    //     continue;
+    //   console.log("ID INGREDIENT", ingredient._id);
+    //   console.log(
+    //     "ID INGREDIENT PIZZA CUSTOM",
+    //     pizzaCustomWithIngredient.ingredients[i]._id
+    //   );
+    //   console.log("ingredient exist");
+    //   const updatedPizza = { ...pizzaCustomWithIngredient };
+    //   updatedPizza.ingredient = updatedPizza.ingredient.filter(
+    //     (ing) => ing._id !== ingredient._id
+    //   );
+    //   updatedPizza.sizeSelectedPrice -= ingredient.price;
+    //   pizzaCustomWithIngredient = updatedPizza;
+    //   return;
+    // }
+    
+    console.log("pizzaCustomWithIngredient", pizzaCustomWithIngredient);
+    // pizzaCustomWithIngredient.ingredient.push(ingredient);
+    pizzaCustomWithIngredient.ingredient = [...pizzaCustomWithIngredient.ingredient, ingredient];
+    console.log("toggleIngredient PIZZA COM INGREDIENT", pizzaCustomWithIngredient);
 
+    dispatch(
+      PizzaSlice.actions.addPizzaToCustomize(pizzaCustomWithIngredient)
+    );
+    console.log("toggleIngredient PIZZA TO CUSTOMIZE NOVO", pizzaToCustomize);
 
-      // pizzaCustomWithIngredient = updatedPizzaCopy;    
-      // console.log("NEWWWWWWWWWWWWWWWWWWWWW", pizzaCustomWithIngredient);  
+    // const updatedPizzaCustomWithIngredient = {
+    //   ...pizzaCustomWithIngredient,
+    //   ingredient: [...pizzaCustomWithIngredient.ingredient, ingredient],
+    // };
 
+    // pizzaCustomWithIngredient = updatedPizzaCustomWithIngredient;
 
-      const updatedPizzaCustomWithIngredient = {
-        ...pizzaCustomWithIngredient, ingredient: [...pizzaCustomWithIngredient.ingredient, ingredient],
-      };
-      
-      console.log("Updated pizzaCustomWithIngredient", updatedPizzaCustomWithIngredient);
+    // pizzaCustomWithIngredient = updatedPizzaCustomWithIngredient;
 
-      // pizzaCustomWithIngredient.ingredient = [...pizzaCustomWithIngredient.ingredient, ingredient];
-      // console.log ("pizzaCustomWithIngredient FINAL", pizzaCustomWithIngredient);
-      // pizzaCustomWithIngredient = { ...pizzaCustomWithIngredient };
-      dispatch(PizzaSlice.actions.addPizzasInCart(updatedPizzaCustomWithIngredient));
-      // console.log("CARRINHO COM PIZZA CUSTOMIZED", pizzaInCart);
-      setDisplayIngTop((prev) => !prev);
-    }
+    // console.log(
+    //   "Updated pizzaCustomWithIngredient",
+    //   updatedPizzaCustomWithIngredient
+    // );
+
+    // pizzaCustomWithIngredient.ingredient = [...pizzaCustomWithIngredient.ingredient, ingredient];
+    // console.log ("pizzaCustomWithIngredient FINAL", pizzaCustomWithIngredient);
+    // pizzaCustomWithIngredient = { ...pizzaCustomWithIngredient };
+    // dispatch(
+    //   PizzaSlice.actions.addPizzasInCart(updatedPizzaCustomWithIngredient)
+    // );
+    // console.log("CARRINHO COM PIZZA CUSTOMIZED", pizzaInCart);
+    setDisplayIngTop((prev) => !prev);
 
     // toggle to display ingredient on top of pizza
-
 
     // for (let i = 0; i < pizzaCustomWithIngredient.ingredient.length; i++) {
     //   if(pizzaCustomWithIngredient.ingredient[i]._id == ingredient._id){

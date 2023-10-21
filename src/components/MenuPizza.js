@@ -39,7 +39,7 @@ export default function MenuPizza() {
     <div className="container text-center menu">
         <div className="row gap-0 row-gap-3">
             {pizza.map((pizza, index) => {
-            console.log("pizza", pizza);
+            // console.log("pizza", pizza);
             return <PizzaItem key={index} obj={pizza} />;
             })}
         </div>
