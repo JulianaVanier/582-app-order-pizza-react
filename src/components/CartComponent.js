@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { PizzaSlice } from "../features/PizzaStore";
 import { useNavigate } from "react-router-dom";
 import { history } from "../App";
+import TopBar from "./TopBar";
 
 
 export default function CartComponent() {
@@ -82,6 +83,7 @@ function placeOrder() {
 
   return (
     <>
+    <TopBar></TopBar>
       <h1>Cart</h1>
 
       <div className="container text-center ">

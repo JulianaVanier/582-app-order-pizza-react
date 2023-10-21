@@ -3,14 +3,40 @@
 //   position: relative; /* Define a posição relativa para o elemento pai */
 //   width: 18rem;
 // }
+.qt-cart{
 
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff2401;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.back-icon{
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.cart-icon{
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
 .menu{
   .card{
     width: 18rem;
   }
 }
 
-
+.card{
+  .card-img-top{
+    position: relative;
+  }
+}
   .image-top-pizzaCustom img{
     width: 20rem;
     max-width: 100%;

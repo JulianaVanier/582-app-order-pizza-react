@@ -51,7 +51,7 @@ export default function PizzaItem(props) {
   };
 
   function displayIngredientsTop() {
-    if (location.pathname !== "/custompizza") return;
+    // if (location.pathname !== "/custompizza") return;
     if (!("ingredient" in pizzaToCustomize)) return;
     console.log("pizzaToCustomize222", pizzaToCustomize.ingredient);
     var imagesReturn = [];

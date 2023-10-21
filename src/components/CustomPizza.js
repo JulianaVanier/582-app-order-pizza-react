@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { useRoute } from "react-router-dom";
+import TopBar from "./TopBar";
 
 export default function CustomPizzaView() {
   const pizzaToCustomize = useSelector((state) => state.pizza.pizzaToCustomize);
@@ -18,6 +19,7 @@ export default function CustomPizzaView() {
 
   return (
     <>
+    <TopBar />
       <div className="box-custom-pizza">
         <PizzaItem obj={pizzaToCustomize} />
       </div>
