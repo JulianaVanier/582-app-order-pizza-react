@@ -127,8 +127,14 @@
 }
 
 .box-input{
-  width: 400px;
+  // width: 400px;
   margin: auto;
+}
+.col {
+  display: flex;
+  /* margin: auto; */
+  /* align-items: center; */
+  justify-content: center;
 }
 
 .total-price{
@@ -148,6 +154,56 @@
   font-size: 1.5rem;
   font-weight: bold;
 }
+
+.title-menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  margin: auto;
+  padding: 10px;
+
+
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  /* width: 200px; */
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: 25%;
+}
+.ingredients{
+  padding-bottom: 20px;
+}
+
+.box-cart{
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-back{
+  justify-content: start;
+}
+
+.box-cart{
+  justify-content: end;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  // Large devices (desktops, 992px and up)
+
+  }
+  @media (min-width: 992px) {
+
+  }
 
 .App {
   text-align: center;

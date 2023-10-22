@@ -61,7 +61,7 @@ function IngredientItem(props) {
   return (
     <>
       {/* <h1>{props}</h1> */}
-      <Col className="ingredients" md={{ span: 1, offset: 1 }}>
+      <Col className="ingredients" xs={6} md={2}>
         <Card
           style={{ width: "10rem" }}
           onClick={() => toggleIngredient(ingredient, pizzaToCustomize)}

@@ -95,7 +95,7 @@ export default function PopUpSize(props) {
         </Modal.Header>
         <Modal.Body>
           <Row>
-            <Col xs={2} md={3} className="text-center border rounded ">
+            <Col xs={6} md={3} className="text-center border rounded ">
               <Image src="/assets/image/pizza-icon.png" fluid />
               <p className="fw-bold">Small</p>
               <p className="fw-semibold fs-5">${props.obj.size.small}</p>

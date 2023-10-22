@@ -21,9 +21,9 @@ function TopBar() {
   return (
     <>
     <Container>
-      <Row>
-        <Col md={4}><img src="/assets/image/back-icon.png" className='back-icon' alt='button back' onClick={ () => {backMenu()}} /></Col>
-        <Col md={{  offset: 6 }}><img src="/assets/image/cart-icon.png" className='cart-icon' alt='button back' /><div class="qt-cart">{ itensPizzaCart }</div></Col>
+      <Row className="box-cart" >
+        <Col className='box-back'><img src="/assets/image/back-icon.png" className='back-icon' alt='button back' onClick={ () => {backMenu()}} /></Col>
+        <Col className='box-cart'><img src="/assets/image/cart-icon.png" className='cart-icon' alt='button back' /><div class="qt-cart">{ itensPizzaCart }</div></Col>
       </Row>
       </Container>
     </>
