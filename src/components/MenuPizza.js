@@ -35,7 +35,8 @@ export default function MenuPizza() {
     return (
 
 <>
-    <h1>Menu</h1>
+    <div className="title-menu"><h1>Menu</h1></div>
+    
     <div className="container text-center menu">
         <div className="row gap-0 row-gap-3">
             {pizza.map((pizza, index) => {
