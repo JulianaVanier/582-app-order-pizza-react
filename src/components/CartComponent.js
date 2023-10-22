@@ -30,6 +30,7 @@ function calcTotalPriceAll() {
   let totalPriceAll = 0;
   for (let i = 0; i < pizzasInCart.length; i++) {
     totalPriceAll += pizzasInCart[i].sizeSelectedPrice * pizzasInCart[i].quantity;
+    totalPriceAll = parseFloat(totalPriceAll.toFixed(2));
   }
   return totalPriceAll;
 };
