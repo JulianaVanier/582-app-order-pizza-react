@@ -49,17 +49,26 @@ export default function PizzaItem(props) {
   };
 
   function displayIngredientsTop() {
-    if (location.pathname !== "/custompizza" && location.pathname !== "/cart") return;
-    if (!("ingredient" in pizzaToCustomize)) return;
-    console.log("pizzaToCustomize222", pizzaToCustomize.ingredient);
+    var pizzaItem = null;
+
+    if (location.pathname === "/custompizza") pizzaItem = pizzaToCustomize;
+    else if (location.pathname === "/cart") pizzaItem = props.obj; 
+    else return;
+    
+
+    if (!("ingredient" in pizzaItem)) return;
+    console.log("pizzaToCustomize222", pizzaItem.ingredient);
     var imagesReturn = [];
-    for (let i = 0; i < pizzaToCustomize.ingredient.length; i++) {
-      if (pizzaToCustomize._id === props.obj._id) {
-      imagesReturn.push(<img src={pizzaToCustomize.ingredient[i].imageCustomReact} />);
+    for (let i = 0; i < pizzaItem.ingredient.length; i++) {
+      if (pizzaItem._id === props.obj._id) {
+      imagesReturn.push(<img src={pizzaItem.ingredient[i].imageCustomReact} />);
       // return  pizzaToCustomize.ingredient[i].imageReact;
       }
     } return imagesReturn;
-  }
+
+
+}
+
 
   //  const onBtnClick = e => {
   //   console.log('ENTROU', location.pathname);
@@ -87,6 +96,9 @@ export default function PizzaItem(props) {
       <Col>
         <Card>
           <Card.Img variant="top" src={props.obj.imageReact} />
+          <div className="image-top-pizzaCustom">
+              {displayIngredientsTop()}
+            </div>
           <Card.Body>
             <Card.Title>{props.obj.title}</Card.Title>
             <Card.Text>{props.obj.description}</Card.Text>
@@ -99,9 +111,6 @@ export default function PizzaItem(props) {
             >
               {customButton()}
             </Button>
-            <div className="image-top-pizzaCustom">
-              {displayIngredientsTop()}
-            </div>
           </Card.Body>
         </Card>
         {showPopUpSize && <PopUpSize obj={props.obj} />}
