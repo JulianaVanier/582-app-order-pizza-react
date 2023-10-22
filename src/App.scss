@@ -27,93 +27,138 @@
   cursor: pointer;
 }
 .menu{
+  margin-bottom: 100px;
   .card{
     width: 18rem;
   }
 }
 
 .card{
-  .card-img-top{
-    position: relative;
-  }
-}
-  .image-top-pizzaCustom img{
-    width: 20rem;
-    max-width: 100%;
+
+    .card-img-top{
+      position: relative;      
+    }
+  .image-top-pizzaCustom {
+    width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
   }
 
-.cart{
-  .card{
-    // background-color: red;
-    height: 8rem;    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border: none;
-  }
+    .image-top-pizzaCustom img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 98%;
+      // z-index: 1;
+      // padding-top: 5px;
+      // padding-left: 8px;
+    }
+
+
+}
+
+.img-order{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img{
-    width: 6rem;
+    width: 50%;
     max-height: 100%;
-    padding-left: 10px;
   }
-  .card-title{
-    // width: 10rem;
-    text-align: left;
-  }
-  .card-text{
-    // width: 10rem;
-    text-align: left;
-  }
-  .btn-add-chose-size{
-    display: none;
-  }
-  .box-qt{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 8rem;
-    height: 2rem;
-    border-radius: 5px;
-    padding: 0 10px;
-    margin-right: 10px;
-    .btn-add{
-      width: 2rem;
-      max-height: 100%;
+
+}
+
+.cart{
+    .card{
+      // background-color: red;
+      // height: 8rem;    
       display: flex;
-      justify-content: center;
+      flex-direction: row;
+      justify-content: space-between;
       align-items: center;
-      cursor: pointer;
+      border: none;
     }
-    .btn-remove{
-      width: 2rem;
+    .card-img-top{
+      width: 6rem;
       max-height: 100%;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    .card-img-top{
+      position: relative;
+      
+    }
+  .image-top-pizzaCustom {
+    width: 6rem;
+    position: absolute;
+    height: 6rem; 
+  }
+
+    .image-top-pizzaCustom img{
+      width: 6rem;
+      max-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      // z-index: 1;
+      // padding-top: 5px;
+      // padding-left: 8px;
+    }
+
+
+    .card-title{
+      // width: 10rem;
+      text-align: left;
+    }
+    .card-text{
+      // width: 10rem;
+      text-align: left;
+    }
+    .btn-add-chose-size{
+      display: none;
+    }
+    .box-qt{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 8rem;
+      height: 2rem;
       border-radius: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
+      padding: 0 10px;
+      margin-right: 10px;
+      .btn-add{
+        width: 2rem;
+        max-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .btn-remove{
+        width: 2rem;
+        max-height: 100%;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      p{
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
     }
-    p{
-      font-size: 1.2rem;
-      font-weight: bold;
+    .box-delete{
+      .btn-delete{
+        width: 2rem;
+        max-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
     }
-  }
-  .box-delete{
-    .btn-delete{
-      width: 2rem;
-      max-height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-  }
 }
 .box-custom-pizza{
   display: flex;
@@ -124,6 +169,7 @@
   // .card-img-top{
   //   position: relative;
   // }
+
 }
 
 .box-input{
