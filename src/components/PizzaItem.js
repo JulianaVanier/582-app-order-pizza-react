@@ -38,11 +38,9 @@ export default function PizzaItem(props) {
   const [showPopUpSize, setShowPopUpSize] = useState(false);
 
   const handleButtonClick = () => {
-    console.log("ENTROU", location.pathname);
     // e.preventDefault();
 
     if (location.pathname === "/custompizza") {
-      console.log("A PIZZA QUE QUERO MANDAR", pizzaToCustomize);
       dispatch(PizzaSlice.actions.addPizzasInCart(pizzaToCustomize));
       navigate("/cart");
     } else {
@@ -51,14 +49,15 @@ export default function PizzaItem(props) {
   };
 
   function displayIngredientsTop() {
-    // if (location.pathname !== "/custompizza") return;
+    if (location.pathname !== "/custompizza" && location.pathname !== "/cart") return;
     if (!("ingredient" in pizzaToCustomize)) return;
     console.log("pizzaToCustomize222", pizzaToCustomize.ingredient);
     var imagesReturn = [];
     for (let i = 0; i < pizzaToCustomize.ingredient.length; i++) {
-
+      if (pizzaToCustomize._id === props.obj._id) {
       imagesReturn.push(<img src={pizzaToCustomize.ingredient[i].imageCustomReact} />);
       // return  pizzaToCustomize.ingredient[i].imageReact;
+      }
     } return imagesReturn;
   }
 
