@@ -1,4 +1,4 @@
-# 582-app-order-pizza
+# 582-app-order-pizza-react
 
 ## Pizza ordering app
 
@@ -115,7 +115,7 @@ fetch(
 
 ```bash
 # clone this repository
-git clone https://github.com/JulianaVanier/582-app-order-pizza.git
+git clone https://github.com/JulianaVanier/582-app-order-pizza-react.git
 
 # navigate to the project directory
 cd your-repo
@@ -133,9 +133,9 @@ node mongo.js
 
 # open in browser
 
-# go to repository 582-app-order-pizza to change fetch
+# go to repository 582-app-order-pizza-react to change fetch
 
-#open file component MenuPizza.vue and change fetch
+#open file component MenuPizza.js and change fetch
 ```
 ```ruby
 fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /pizza")
@@ -145,7 +145,7 @@ fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /pizza")
           this.pizzaStore.addPizza(pizza);
         }
 });
-#open file component IngredientList.vue and change fetch
+#open file component IngredientList.js and change fetch
 fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /customizepizza")
         .then((response) => response.json())
         .then((json) => {
@@ -154,7 +154,7 @@ fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /customizepizza")
           }
 });
 
-#open file component CartComponent.vue and change fetch
+#open file component CartComponent.js and change fetch
 fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /placeorder",
     {
       method: "POST",
@@ -174,7 +174,7 @@ fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /placeorder",
           this.$router.push("/orderplaced/" + orderToDb.orderNumber);
 });
 
-#open file component PreviewOrder.vue and change fetch
+#open file component PreviewOrder.js and change fetch
 fetch(
         "HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /previeworder/" +
           this.orderNumber
