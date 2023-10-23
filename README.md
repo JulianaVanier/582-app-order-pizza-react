@@ -1,70 +1,211 @@
-# Getting Started with Create React App
+# 582-app-order-pizza
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Pizza ordering app
 
-## Available Scripts
+Welcome to the Pizza Buying App! This is an application developed in React, Node.js and MongoDB that allows users to choose pizzas from the menu or customize their own pizzas by adding ingredients and choosing sizes.
 
-In the project directory, you can run:
+## Application Features
 
-### `npm start`
+- Choose pizzas from the menu
+- Customize your own pizza
+- Add extra ingredients
+- Choose the size of the pizza
+- View the total price based on your choices
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- Redux
+- Jest (for testing)
+- Node.js
+- MongoDB
+- Sass
+- Prettier
+- JavaScript
+- HTML
+- CSS
+- Booststrap
 
-### `npm test`
+## Screenshot
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Menu Pizza
+![Project Image](/docs/menu-react.png)
+Select Size
+![Project Image](/docs/popup.png)
+Custom Pizza
+![Project Image](/docs/custom-pizza.png)
+Cart / Preview Order
+![Project Image](/docs/cart-pizza.png)
+Order placed
+![Project Image](/docs/order-pizza.png)
 
-### `npm run build`
+## API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Project Image](/docs/582-app-order-pizza-API.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Request Samples NODE.JS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```ruby
+# GET Available Pizza's
+fetch("https://bookish-rotary-phone-j6j6g76r445255vv-3000.app.github.dev/pizza")
+      .then((response) => response.json())
+      .then((json) => {
+        for (let pizza of json) {
+          this.pizzaStore.addPizza(pizza);
+        }
+});
 
-### `npm run eject`
+# GET Available Ingredient's
+fetch("https://bookish-rotary-phone-j6j6g76r445255vv-3000.app.github.dev/customizepizza")
+        .then((response) => response.json())
+        .then((json) => {
+          for (let ingredient of json) {
+            this.ingredientStore.addIngredient(ingredient);
+          }
+});
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# POST Order
+fetch("https://bookish-rotary-phone-j6j6g76r445255vv-3000.app.github.dev/placeorder",
+    {
+      method: "POST",
+      body: JSON.stringify(orderToDb),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+    )
+        .then((response) => {
+          console.log(response);
+          return response.text();
+        })
+        .then((data) => {
+          console.log(data);
+          this.pizzaStore.clearCart();
+          this.$router.push("/orderplaced/" + orderToDb.orderNumber);
+});
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# GET Order
+fetch(
+        "https://bookish-rotary-phone-j6j6g76r445255vv-3000.app.github.dev/previeworder/" +
+          this.orderNumber
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          this.pizzaStore.clearCart();
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+          console.log("JSONNNN", json);
+          for (let pizza of json.pizza) {
+            if (pizza.custom === true) {
+              this.pizzaStore.addCustomToCart(pizza);
+            } else {
+              this.pizzaStore.addPizzaToCart(
+                pizza,
+                pizza.priceSelected,
+                pizza.sizeSelected
+              );
+            }
+            this.$router.push("/cart/" + pizza.id);
+            console.log("order do FETCH", pizza);
+        }
+});
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Project setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# clone this repository
+git clone https://github.com/JulianaVanier/582-app-order-pizza.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# navigate to the project directory
+cd your-repo
 
-### Code Splitting
+# install dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# clone the repository that contains file node to connect with DB
+git clone https://github.com/JulianaVanier/582-codespace-order-pizza.git
 
-### Analyzing the Bundle Size
+#create your codespace with this repository and run file mongo.js
+node mongo.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# go to PORTS right click in 3000 and select port visibility PUBLIC
 
-### Making a Progressive Web App
+# open in browser
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# go to repository 582-app-order-pizza to change fetch
 
-### Advanced Configuration
+#open file component MenuPizza.vue and change fetch
+```
+```ruby
+fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /pizza")
+      .then((response) => response.json())
+      .then((json) => {
+        for (let pizza of json) {
+          this.pizzaStore.addPizza(pizza);
+        }
+});
+#open file component IngredientList.vue and change fetch
+fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /customizepizza")
+        .then((response) => response.json())
+        .then((json) => {
+          for (let ingredient of json) {
+            this.ingredientStore.addIngredient(ingredient);
+          }
+});
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#open file component CartComponent.vue and change fetch
+fetch("HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /placeorder",
+    {
+      method: "POST",
+      body: JSON.stringify(orderToDb),
+      headers: {
+        "Content-Type": "application/json",
+        },
+    }
+    )
+        .then((response) => {
+          console.log(response);
+          return response.text();
+        })
+        .then((data) => {
+          console.log(data);
+          this.pizzaStore.clearCart();
+          this.$router.push("/orderplaced/" + orderToDb.orderNumber);
+});
 
-### Deployment
+#open file component PreviewOrder.vue and change fetch
+fetch(
+        "HERE THE ADRESS OF YOUR CODESPACE THAT IS RUNNING + /previeworder/" +
+          this.orderNumber
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          this.pizzaStore.clearCart();
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+          console.log("JSONNNN", json);
+          for (let pizza of json.pizza) {
+            if (pizza.custom === true) {
+              this.pizzaStore.addCustomToCart(pizza);
+            } else {
+              this.pizzaStore.addPizzaToCart(
+                pizza,
+                pizza.priceSelected,
+                pizza.sizeSelected
+              );
+            }
+            this.$router.push("/cart/" + pizza.id);
+            console.log("order do FETCH", pizza);
+        }
+});
+```
+```bash
+# save and run the application
+npm run serve
 
-### `npm run build` fails to minify
+# build for production with minification
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# run unit tests in watch mode
+npm run test:unit
+```
