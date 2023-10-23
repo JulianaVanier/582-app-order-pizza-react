@@ -23,6 +23,7 @@ export default function CartComponent() {
 function calcTotalPrice(pizzaInCart) {
   let totalPrice = 0;
   totalPrice = pizzaInCart.sizeSelectedPrice * pizzaInCart.quantity;
+  totalPrice = parseFloat(totalPrice.toFixed(2));
   return totalPrice;
 };
 
@@ -90,7 +91,6 @@ function placeOrder() {
       <div className="container text-center ">
         <div className="row gap-0 row-gap-3">
           {pizzasInCart.map((pizzaInCart) => {
-            console.log("pizza OLHHAAAA", pizzaInCart);
             return (
               <Container className="cart" key={pizzaInCart._id}>
                 <Row>
